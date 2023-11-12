@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>204742374983-dl8blcu4738pgn3ndvhkbruhb1djh8h3.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.204742374983-dl8blcu4738pgn3ndvhkbruhb1djh8h3</string>
+	<key>API_KEY</key>
+	<string>AIzaSyABqpZnflp7re4hxnft2sxdz0fCdclvado</string>
+	<key>GCM_SENDER_ID</key>
+	<string>204742374983</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.rentalApp.RunnerTests</string>
+	<key>PROJECT_ID</key>
+	<string>rental-app-68251</string>
+	<key>STORAGE_BUCKET</key>
+	<string>rental-app-68251.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:204742374983:ios:c474dcd3d90af253aae362</string>
+</dict>
+</plist>
