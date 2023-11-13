@@ -26,7 +26,7 @@ class AccountScreen extends StatelessWidget {
                   color: const Color.fromARGB(255, 60, 128, 184),
                   fontFamily: 'JosefinSans',
                   fontWeight: FontWeight.w600,
-                  fontSize: 28,
+                  fontSize: 20,
                 ),
               ),
               actions: [
