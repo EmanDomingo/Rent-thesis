@@ -16,6 +16,10 @@ class OwnerAuthScreen extends StatelessWidget {
           return SignInScreen(
             providers: [
               EmailAuthProvider(),
+              // GoogleAuthProvider(cliendId:'204742374983-f74d8ksudq5vr1n3jv0q1chaaipfmo9l.apps.googleusercontent.com'),
+              // GoogleAuthProvider(
+              //   clientId: '',
+              // ),
             ],
           );
         }

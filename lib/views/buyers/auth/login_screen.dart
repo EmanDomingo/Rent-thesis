@@ -20,29 +20,59 @@ class _LoginScreenState extends State<LoginScreen> {
 
   bool _isLoading = false;
 
-  _loginUsers() async {
-    setState(() {
-      _isLoading = true;
-    });
+  _loginUsers () async {
+    
     if (_formKey.currentState!.validate()) {
-      await _authController.LoginUsers(email, password);
+      String res = await _authController.LoginUsers(email, password);
+
+      if (res == 'success') {
       return Navigator.pushReplacement(context,
           MaterialPageRoute(builder: (BuildContext context) {
         return MainScreen();
       }));
 
-      // } else {
-
-      //   return showSnack(context, res);
-      // }
-      //return showSnack(context, 'You Are Now Logged In');
+      } else {
+        return showSnack(context, res);
+      }
     } else {
-      setState(() {
-        _isLoading = false;
-      });
-      return showSnack(context, 'Please fields most not be emty');
+      return showSnack(context, 'You Are Now Logged In');
     }
   }
+
+  //   } else {
+  //     setState(() {
+  //       _isLoading = false;
+  //     });
+  //     return showSnack(context, 'Please fields most not be emty');
+  //   }
+  // }
+
+
+  // _loginUsers () async {
+  //   setState(() {
+  //     _isLoading = true;
+  //   });
+    
+  //   if (_formKey.currentState!.validate()) {
+  //     await _authController
+  //     .LoginUsers(email, password);
+  //     return Navigator.pushReplacement(context,
+  //         MaterialPageRoute(builder: (BuildContext context) {
+  //       return MainScreen();
+  //     }));
+
+  //     // } else {
+
+  //     //   return showSnack(context, res);
+  //     // }
+  //     //return showSnack(context, 'You Are Now Logged In');
+  //   } else {
+  //     setState(() {
+  //       _isLoading = false;
+  //     });
+  //     return showSnack(context, 'Please fields most not be emty');
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -104,8 +134,7 @@ class _LoginScreenState extends State<LoginScreen> {
               onTap: () {
                 Navigator.of(context).pushAndRemoveUntil(
                     MaterialPageRoute(builder: (context) => MainScreen()),
-                    (route) => false);
-                _loginUsers();
+                    _loginUsers());
               },
               child: Container(
                 width: MediaQuery.of(context).size.width - 40,

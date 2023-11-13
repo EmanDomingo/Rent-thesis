@@ -15,92 +15,93 @@ class AccountScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     CollectionReference users = FirebaseFirestore.instance.collection('buyers');
 
-    return _auth.currentUser == null
-        ? Scaffold(
-            appBar: AppBar(
-              elevation: 2,
-              backgroundColor: const Color.fromARGB(255, 60, 128, 184),
-              title: Text(
-                'Profile',
-                style: TextStyle(
-                  color: const Color.fromARGB(255, 60, 128, 184),
-                  fontFamily: 'JosefinSans',
-                  fontWeight: FontWeight.w600,
-                  fontSize: 20,
-                ),
-              ),
-              actions: [
-                Padding(
-                  padding: const EdgeInsets.all(14.0),
-                  child: Icon(Icons.star),
-                ),
-              ],
-            ),
-            body: SingleChildScrollView(
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: 25,
-                  ),
-                  Center(
-                    child: CircleAvatar(
-                      radius: 64,
-                      backgroundColor: Colors.blue.shade300,
-                      child: Icon(
-                        Icons.person,
-                        size: 80,
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 25,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      'Login Account To Access Profile',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 25,
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.pushReplacement(context,
-                          MaterialPageRoute(builder: (context) {
-                        return LoginScreen();
-                      }));
-                    },
-                    child: Container(
-                      height: 40,
-                      width: MediaQuery.of(context).size.width - 200,
-                      decoration: BoxDecoration(
-                        color: Colors.blue.shade300,
-                        borderRadius: BorderRadius.circular(5),
-                        boxShadow: [],
-                      ),
-                      child: Center(
-                        child: Text(
-                          'LOGIN ACCOUNT',
-                          style: TextStyle(
-                            color: Colors.white,
-                            letterSpacing: 2,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          )
-        : FutureBuilder<DocumentSnapshot>(
+    // return _auth.currentUser == null
+    //     ? Scaffold(
+    //         appBar: AppBar(
+    //           elevation: 2,
+    //           backgroundColor: const Color.fromARGB(255, 60, 128, 184),
+    //           title: Text(
+    //             'Profile',
+    //             style: TextStyle(
+    //               color: const Color.fromARGB(255, 60, 128, 184),
+    //               fontFamily: 'JosefinSans',
+    //               fontWeight: FontWeight.w600,
+    //               fontSize: 20,
+    //             ),
+    //           ),
+    //           actions: [
+    //             Padding(
+    //               padding: const EdgeInsets.all(14.0),
+    //               child: Icon(Icons.star),
+    //             ),
+    //           ],
+    //         ),
+    //         body: SingleChildScrollView(
+    //           child: Column(
+    //             children: [
+    //               SizedBox(
+    //                 height: 25,
+    //               ),
+    //               Center(
+    //                 child: CircleAvatar(
+    //                   radius: 64,
+    //                   backgroundColor: Colors.blue.shade300,
+    //                   child: Icon(
+    //                     Icons.person,
+    //                     size: 80,
+    //                   ),
+    //                 ),
+    //               ),
+    //               SizedBox(
+    //                 height: 25,
+    //               ),
+    //               Padding(
+    //                 padding: const EdgeInsets.all(8.0),
+    //                 child: Text(
+    //                   'Login Account To Access Profile',
+    //                   style: TextStyle(
+    //                     fontSize: 20,
+    //                     fontWeight: FontWeight.bold,
+    //                   ),
+    //                 ),
+    //               ),
+    //               SizedBox(
+    //                 height: 25,
+    //               ),
+    //               InkWell(
+    //                 onTap: () {
+    //                   Navigator.pushReplacement(context,
+    //                       MaterialPageRoute(builder: (context) {
+    //                     return LoginScreen();
+    //                   }));
+    //                 },
+    //                 child: Container(
+    //                   height: 40,
+    //                   width: MediaQuery.of(context).size.width - 200,
+    //                   decoration: BoxDecoration(
+    //                     color: Colors.blue.shade300,
+    //                     borderRadius: BorderRadius.circular(5),
+    //                     boxShadow: [],
+    //                   ),
+    //                   child: Center(
+    //                     child: Text(
+    //                       'LOGIN ACCOUNT',
+    //                       style: TextStyle(
+    //                         color: Colors.white,
+    //                         letterSpacing: 2,
+    //                         fontWeight: FontWeight.bold,
+    //                         fontSize: 18,
+    //                       ),
+    //                     ),
+    //                   ),
+    //                 ),
+    //               ),
+    //             ],
+    //           ),
+    //         ),
+    //       )
+        // :
+        return FutureBuilder<DocumentSnapshot>(
             future: users.doc(FirebaseAuth.instance.currentUser!.uid).get(),
             builder: (BuildContext context,
                 AsyncSnapshot<DocumentSnapshot> snapshot) {
