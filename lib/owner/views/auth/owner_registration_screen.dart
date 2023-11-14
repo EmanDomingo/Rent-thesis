@@ -1,6 +1,5 @@
 
 
-
 import 'package:country_state_city_picker/country_state_city_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -8,6 +7,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:rental_app/utils/show_snackBar.dart';
 
 import '../../controllers/owner_register_controller.dart';
 
@@ -25,7 +25,6 @@ class _OwnerRegistrationScreenState extends State<OwnerRegistrationScreen> {
   late String bussinessName;
   late String email;
   late String phoneNumber;
-  //late String taxNumber;
   late String countryValue;
   late String stateValue;
   late String cityValue;
@@ -48,16 +47,7 @@ class _OwnerRegistrationScreenState extends State<OwnerRegistrationScreen> {
     });
   }
 
-  //String? _taxStatus;
-
-
-  // List<String> _taxOptions = [
-  //   'YES',
-  //   'NO',
-  // ];
-
   _saveOwnerDetail() async {
-    EasyLoading.show(status: 'PLEASE WAIT');
     
     if(_formKey.currentState!.validate()) {
     await _ownerController.registerOwner(bussinessName, email, phoneNumber,
@@ -72,59 +62,64 @@ class _OwnerRegistrationScreenState extends State<OwnerRegistrationScreen> {
         // });
       });
     } else {
-      print('Bad');
-
       EasyLoading();
     }
   }
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          SliverAppBar(
-            backgroundColor: Colors.blue.shade300,
-            toolbarHeight: 200,
-            flexibleSpace: LayoutBuilder(builder: (context, constraints) {
-              return FlexibleSpaceBar(
-                background: Container(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [
-                      Colors.blue.shade900,
-                      Colors.blue,
-                      ],
+Widget build(BuildContext context) {
+  return Scaffold(
+    body: Container(
+      decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Color.fromARGB(255, 255, 255, 255),const Color.fromARGB(255, 215, 255, 217)], // Add your gradient colors here
+          ),
+        ),
+      child: CustomScrollView(
+        slivers: [ SliverAppBar(
+          backgroundColor: Colors.green.shade500,
+              pinned: true,
+              stretchTriggerOffset: 150,
+              expandedHeight: 200,
+              flexibleSpace: LayoutBuilder(builder: (context, constraints) {
+                return FlexibleSpaceBar(
+                  background: Container(
+                    child: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            height: 120,
+                            width: 150,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(20),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.5),
+                                  spreadRadius: 2,
+                                  blurRadius: 4,
+                                ),
+                              ],
+                            ),
+                            child: _image != null
+                                ? Image.memory(_image!)
+                                : IconButton(
+                                    onPressed: () {
+                                      selectGalleryImage();
+                                    },
+                                    icon: Icon(CupertinoIcons.photo),
+                                  ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-
-                  child: Center(
-                    child:  Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        height: 90,
-                        width: 90,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-
-                        child: _image != null
-                        ? Image.memory(_image!)
-                        :IconButton(
-                          onPressed: (){
-                            selectGalleryImage();
-                          },
-                        icon: Icon(CupertinoIcons.photo),
-                        ),
-                      ),
-                    ],),
-                  ),
-                ),
-              );
-            }),
-          ),
-
+                );
+              }),
+            ),
+          
           SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.all(10.0),
@@ -137,27 +132,28 @@ class _OwnerRegistrationScreenState extends State<OwnerRegistrationScreen> {
                         bussinessName = value;
                       },
                       validator: (value) {
-                        if(value!.isEmpty){
-                          return 'Please Bussiness Name Must Not Be Empty';
+                        if (value!.isEmpty) {
+                          return 'Please enter a valid business name';
                         } else {
                           return null;
                         }
                       },
                       keyboardType: TextInputType.name,
                       decoration: InputDecoration(
-                        labelText: 'Enter Full Name',
+                        labelText: 'Enter Business Name',
+                        border: OutlineInputBorder(),
                       ),
                     ),
                     SizedBox(
                       height: 10,
-                      ),
+                    ),
                     TextFormField(
                       onChanged: (value) {
                         email = value;
                       },
                       validator: (value) {
-                        if(value!.isEmpty){
-                          return 'Please Email Address Must Not Be Empty';
+                        if (value!.isEmpty) {
+                          return 'Please enter a valid email address';
                         } else {
                           return null;
                         }
@@ -165,18 +161,19 @@ class _OwnerRegistrationScreenState extends State<OwnerRegistrationScreen> {
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
                         labelText: 'Email Address',
+                        border: OutlineInputBorder(),
                       ),
                     ),
                     SizedBox(
                       height: 10,
-                      ),
+                    ),
                     TextFormField(
                       onChanged: (value) {
                         phoneNumber = value;
                       },
                       validator: (value) {
-                        if(value!.isEmpty){
-                          return 'Please Phone Number Must Not Be Empty';
+                        if (value!.isEmpty) {
+                          return 'Please enter a valid phone number';
                         } else {
                           return null;
                         }
@@ -184,114 +181,87 @@ class _OwnerRegistrationScreenState extends State<OwnerRegistrationScreen> {
                       keyboardType: TextInputType.number,
                       decoration: InputDecoration(
                         labelText: 'Phone Number',
+                        border: OutlineInputBorder(),
                       ),
                     ),
-              
+                    SizedBox(
+                      height: 10,
+                    ),
                     Padding(
                       padding: const EdgeInsets.all(14.0),
-                      child: SelectState(
-                                  onCountryChanged: (value) {
-                                  setState(() {
-                                    countryValue = value;
-                                  });
-                                },
-                                onStateChanged:(value) {
-                                  setState(() {
-                                    stateValue = value;
-                                  });
-                                },
-                                onCityChanged:(value) {
-                                  setState(() {
-                                    cityValue = value;
-                                  });
-                                },
-                                
-                                ),
-                    ),
-              
-                    // Padding(
-                    //   padding: const EdgeInsets.all(8.0),
-                    //   child: Row(
-                    //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    //     children: [
-                    //     Text(
-                    //       'Tax Registered?',
-                    //     style: TextStyle(
-                    //       fontSize: 16,
-                    //       fontWeight: FontWeight.w500,
-                    //         ),
-                    //       ),
-                    //       Flexible(
-                    //         child: Container(
-                    //           width: 100,
-                    //           child: DropdownButtonFormField(
-                    //             hint: Text('Select'),
-                    //             items: _taxOptions
-                    //           .map<DropdownMenuItem<String>>((String value) {
-                    //             return DropdownMenuItem<String>(
-                    //               value: value, child: Text(value));
-                    //           }).toList(),
-                    //           onChanged: ((value) {
-                    //             setState(() {
-                    //               _taxStatus = value;
-                    //             });
-                    //           })
-                    //           ),
-                    //         ),
-                    //       )
-                    //     ],
-                    //   ),
-                    // ),
-              
-                    // if (_taxStatus == 'YES')
-                    // Padding(
-                    //   padding: const EdgeInsets.all(10.0),
-                    //   child: TextFormField(
-                    //     onChanged: (value) {
-                    //     taxNumber = value;
-                    //   },
-                    //     validator: (value) {
-                    //     if(value!.isEmpty){
-                    //       return 'Please Tax Number Must Not Be Empty';
-                    //     } else {
-                    //       return null;
-                    //     }
-                    //   },
-                    //     decoration: InputDecoration(
-                    //       labelText: 'Tax Number'
-                    //     ),
-                    //   ),
-                    // ),
-              
-                    InkWell(
-                      onTap: () {
-                        _saveOwnerDetail();
-                      },
-                      child: Container(
-                        height: 30,
-                        width: MediaQuery.of(context).size.width -40,
-                        decoration: BoxDecoration(
-                          color: Colors.blue.shade300,
-                          borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Center(
-                            child: Text('Save',
-                              style: TextStyle(
-                                fontSize: 18,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Expanded(
+                            child: SelectState(
+                              onCountryChanged: (value) {
+                                setState(() {
+                                  countryValue = value;
+                                });
+                              },
+                              onStateChanged: (value) {
+                                setState(() {
+                                  stateValue = value;
+                                });
+                              },
+                              onCityChanged: (value) {
+                                setState(() {
+                                  cityValue = value;
+                                });
+                              },
+                              
                               ),
-                            ),
                           ),
+                        ],
                       ),
                     ),
-                  ],
+                    SizedBox(
+                      height: 10,
+                    ),
+                    InkWell(
+                      onTap: () {
+                        if (_image == null) {
+                          showSnack(context, 'Please select an image');
+                        } else {
+                          _saveOwnerDetail();
+                        }
+                      },
+                      child: Container(
+                        height: 50,
+                        width: MediaQuery.of(context).size.width - 40,
+                        decoration: BoxDecoration(
+                          color: Colors.green.shade500,
+                          borderRadius: BorderRadius.circular(10),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.shade600,
+                              spreadRadius: 1,
+                              blurRadius: 2,
+                              offset: const Offset(0, 3),
+                            ),
+                          ],
+                        ),
+                        child: Center(
+                          child: Text(
+                            'Save',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 19,
+                              fontWeight: FontWeight.bold,
+                              letterSpacing: 2,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          )
-        ],
-      ),
+            )
+          ],
+        ),
+    ),
     );
   }
 }

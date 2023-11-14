@@ -18,76 +18,93 @@ class LandingScreen extends StatelessWidget {
     FirebaseFirestore.instance.collection('owners');
 
     return Scaffold(
-      body: StreamBuilder<DocumentSnapshot>(
-      stream: _ownersStream.doc(_auth.currentUser!.uid).snapshots(),
-      builder: (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
-        if (snapshot.hasError) {
-          return Text('Something went wrong');
-        }
-
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return Text("Loading");
-        }
-
-        if (!snapshot.data!.exists) {
-          return OwnerRegistrationScreen();
-        }
-        
-        OwnerUserModel ownerUserModel = OwnerUserModel.fromJson(
-          snapshot.data!.data()! as Map<String, dynamic>);
-
-          if(ownerUserModel.approved == true) {
-            return MainOwnerScreen();
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Color.fromARGB(255, 107, 230, 158), Color.fromARGB(255, 239, 255, 239),], // Add your gradient colors here
+          ),
+        ),
+        child: StreamBuilder<DocumentSnapshot>(
+        stream: _ownersStream.doc(_auth.currentUser!.uid).snapshots(),
+        builder: (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+          if (snapshot.hasError) {
+            return Text('Something went wrong');
           }
-
-        return Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(5),
-              child:  Image.network(
-                ownerUserModel.storeImage.toString(),
-                width: 90,
-                fit: BoxFit.cover,
+      
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Text("Loading");
+          }
+      
+          if (!snapshot.data!.exists) {
+            return OwnerRegistrationScreen();
+          }
+          
+          OwnerUserModel ownerUserModel = OwnerUserModel.fromJson(
+            snapshot.data!.data()! as Map<String, dynamic>);
+      
+            if(ownerUserModel.approved == true) {
+              return MainOwnerScreen();
+            }
+      
+          return Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child:  Image.network(
+                  ownerUserModel.storeImage.toString(),
+                  height: 150,
+                  width: 150,
+                  fit: BoxFit.cover,
+                ),
               ),
-            ),
-
-            SizedBox(
-              height: 15,
-            ),
-            Text(
-              ownerUserModel.bussinessName.toString(),
+      
+              SizedBox(
+                height: 15,
+              ),
+              Text(
+                ownerUserModel.bussinessName.toString(),
+                style: TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+      
+              SizedBox(
+                height: 10,
+              ),
+              Text('Your application has been sent to admin\n Admin will get back to you soon',
               style: TextStyle(
-                fontSize: 22,
-                fontWeight: FontWeight.w500,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.center,
               ),
-            ),
-
-            SizedBox(
-              height: 10,
-            ),
-            Text('Your application has been sent to admin\n Admin will get back to you soon',
-            style: TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.w400,
+      
+              SizedBox(
+                height: 10,
               ),
-              textAlign: TextAlign.center,
-            ),
-
-            SizedBox(
-              height: 10,
-            ),
-            TextButton(
-              onPressed: () async {
-                await _auth.signOut();
-              },
-            child: Text('Signout'),
-            ),
-          ],
-        ));
-      },
-    ));
+              TextButton(
+                onPressed: () async {
+                  await _auth.signOut();
+                },
+              child: Text('Signout',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Colors.green.shade800,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              ),
+            ],
+          ));
+        },
+          ),
+      ));
     
   }
 }

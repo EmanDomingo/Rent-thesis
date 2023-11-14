@@ -38,6 +38,14 @@ class _BuyerRegisterScreenState extends State<BuyerRegisterScreen> {
     setState(() {
       _isLoading = true;
     });
+
+    if (_image == null) {
+    setState(() {
+      _isLoading = false;
+    });
+    return showSnack(context, 'Please select an image');
+  }
+
     if (_formKey.currentState!.validate()) {
       await _authController
           .signUpUSers(email, fullName, address, phoneNumber, password, _image)
@@ -48,8 +56,11 @@ class _BuyerRegisterScreenState extends State<BuyerRegisterScreen> {
         });
       });
 
-      return showSnack(
-          context, 'Congratulations An Account Has Been Created For You');
+      return Navigator.pushReplacement(context,
+          MaterialPageRoute(builder: (BuildContext context) {
+        return MainScreen();
+      }));
+      
     } else {
       setState(() {
         _isLoading = false;
@@ -116,6 +127,7 @@ class _BuyerRegisterScreenState extends State<BuyerRegisterScreen> {
                             backgroundImage: NetworkImage(
                                 'https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg'),
                           ),
+                          
                     Positioned(
                       right: 0,
                       top: 5,
@@ -124,6 +136,7 @@ class _BuyerRegisterScreenState extends State<BuyerRegisterScreen> {
                           selectGalleryImage();
                         },
                         icon: Icon(CupertinoIcons.photo),
+                        
                       ),
                     ),
                   ],
@@ -266,7 +279,7 @@ class _BuyerRegisterScreenState extends State<BuyerRegisterScreen> {
                                     color: Colors.white,
                                     fontSize: 19,
                                     fontWeight: FontWeight.bold,
-                                    letterSpacing: 3,
+                                    letterSpacing: 2,
                                   ),
                                 )),
                     ),

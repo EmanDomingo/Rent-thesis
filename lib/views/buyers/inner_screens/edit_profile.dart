@@ -2,7 +2,6 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 
@@ -17,13 +16,14 @@ class EditProfileScreen extends StatefulWidget {
 
 class _EditProfileScreenState extends State<EditProfileScreen> {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
   final TextEditingController _fullNameController = TextEditingController();
 
   final TextEditingController _emailController = TextEditingController();
 
   final TextEditingController _phoneController = TextEditingController();
 
-  String? address;
+  final TextEditingController _addressController = TextEditingController();
   
 
   @override
@@ -32,6 +32,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
       _fullNameController.text = widget.userData['fullName'];
       _emailController.text = widget.userData['email'];
       _phoneController.text = widget.userData['phoneNumber'];
+      _addressController.text = widget.userData['address'];
     });
     super.initState();
   }
@@ -40,18 +41,15 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        iconTheme: IconThemeData(
-          color: Colors.black,
-        ),
-        elevation: 0,
         title: Text(
-          'Edit Profile',
+          'EDIT PROFILE',
         style: TextStyle(
-          color: Colors.black,
-          letterSpacing: 5,
-          fontSize: 18,
-        ),),
+          color: const Color.fromARGB(255, 60, 128, 184),
+          fontFamily: 'JosefinSans',
+          fontWeight: FontWeight.bold,
+          fontSize: 20,
+          )
+        ),
       ),
 
       body: SingleChildScrollView(
@@ -63,22 +61,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 SizedBox(
                   height: 20,
                 ),
-                Stack(children: [
-                  CircleAvatar(
-                    radius: 60,
-                    backgroundColor: Colors.blue.shade300,
-                  ),
                 
-                  Positioned(
-                    right: 0,
-                    child: IconButton(
-                      onPressed: () {
-                        
-                      },
-                      icon: Icon(CupertinoIcons.photo),
-                    ))
-                ],),
-          
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
@@ -112,9 +95,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
-                    onChanged: (value) {
-                      address = value;
-                    },
+                    controller: _addressController,
                     decoration: InputDecoration(
                       labelText: 'Enter Address',
                     ),
@@ -138,7 +119,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               'fullName': _fullNameController.text,
               'email': _emailController.text,
               'phoneNumber': _phoneController.text,
-              'address':address,
+              'address':_addressController.text,
           }).whenComplete(() {
             EasyLoading.dismiss();
             Navigator.pop(context);
@@ -164,10 +145,11 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               child: Text(
                 'UPDATE',
                 style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                  letterSpacing: 5,
-                ),
+                    color:  Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                    letterSpacing: 3,
+                    ),
               ),
             ),
           ),
