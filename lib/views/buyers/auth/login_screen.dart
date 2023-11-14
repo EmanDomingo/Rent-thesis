@@ -74,84 +74,84 @@ class _LoginScreenState extends State<LoginScreen> {
   //   }
   // }
 
-  @override
+    @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Center(
-      child: Form(
-        key: _formKey,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'Login Customer"s Account',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(13.0),
-              child: TextFormField(
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Please Email field must not be emty';
-                  } else {
-                    return null;
-                  }
-                },
-                onChanged: (value) {
-                  email = value;
-                },
-                decoration: InputDecoration(
-                  labelText: 'Enter Email Address',
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Color.fromARGB(255, 255, 255, 255),Color.fromARGB(255, 107, 174, 230),], // Add your gradient colors here
+          ),
+        ),
+        child: Center(
+          child: Form(
+            key: _formKey,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Login Customer\'s Account',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blue,
+                  ),
                 ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(13.0),
-              child: TextFormField(
-                obscureText: true,
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Please Password must not be emty';
-                  } else {
-                    return null;
-                  }
-                },
-                onChanged: (value) {
-                  password = value;
-                },
-                decoration: InputDecoration(
-                  labelText: 'Enter Password',
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            InkWell(
-              onTap: () {
-                Navigator.of(context).pushAndRemoveUntil(
-                    MaterialPageRoute(builder: (context) => MainScreen()),
-                    _loginUsers());
-              },
-              child: Container(
-                width: MediaQuery.of(context).size.width - 40,
-                height: 50,
-                decoration: BoxDecoration(
-                  color: Colors.blue.shade500,
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.shade600,
-                      spreadRadius: 1,
-                      blurRadius: 2,
-                      offset: const Offset(0, 3),
+                SizedBox(height: 20),
+                Padding(
+                  padding: const EdgeInsets.all(13.0),
+                  child: TextFormField(
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Please enter your email address';
+                      } else {
+                        return null;
+                      }
+                    },
+                    onChanged: (value) {
+                      email = value;
+                    },
+                    decoration: InputDecoration(
+                      labelText: 'Email Address',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                        borderSide: BorderSide(
+                          color: Colors.white,
+                        ),
+                      ),
                     ),
-                  ],
+                  ),
                 ),
-                child: Center(
+                Padding(
+                  padding: const EdgeInsets.all(13.0),
+                  child: TextFormField(
+                    obscureText: true,
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Please enter your password';
+                      } else {
+                        return null;
+                      }
+                    },
+                    onChanged: (value) {
+                      password = value;
+                    },
+                    decoration: InputDecoration(
+                      labelText: 'Password',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                        borderSide: BorderSide(
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 20),
+                ElevatedButton(
+                  onPressed: _loginUsers,
                   child: _isLoading
                       ? CircularProgressIndicator(
                           color: Colors.white,
@@ -159,68 +159,75 @@ class _LoginScreenState extends State<LoginScreen> {
                       : Text(
                           'Login',
                           style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 19,
-                            fontWeight: FontWeight.bold,
-                            letterSpacing: 3,
-                          ),
+                                    color: Colors.white,
+                                    fontSize: 19,
+                                    fontWeight: FontWeight.bold,
+                                    letterSpacing: 1,
+                                  ),
                         ),
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Colors.blue),
+                    shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    )),
+                  ),
                 ),
+              SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Need An Account?',
+                    style: TextStyle(
+                      fontSize: 15,
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return BuyerRegisterScreen();
+                      }));
+                    },
+                    child: Text(
+                      'Register',
+                      style: TextStyle(
+                        fontSize: 18,
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Need An Account?',
-                  style: TextStyle(
-                    fontSize: 15,
-                  ),
-                ),
-                TextButton(
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return BuyerRegisterScreen();
-                    }));
-                  },
-                  child: Text(
-                    'Register',
+      
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Create Owners Account?',
                     style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 15,
                     ),
                   ),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Create Owners Account?',
-                  style: TextStyle(
-                    fontSize: 15,
-                  ),
-                ),
-                TextButton(
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return OwnerAuthScreen();
-                    }));
-                  },
-                  child: Text(
-                    'Create',
-                    style: TextStyle(
-                      fontSize: 18,
+                  TextButton(
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return OwnerAuthScreen();
+                      }));
+                    },
+                    child: Text(
+                      'Create',
+                      style: TextStyle(
+                        fontSize: 18,
+                      ),
                     ),
                   ),
-                ),
-              ],
-            ),
-          ],
+                ],
+              ),
+            ],
+          ),
         ),
-      ),
-    ));
+          ),
+      ));
   }
 }

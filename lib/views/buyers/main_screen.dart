@@ -33,6 +33,7 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
         //backgroundColor: Color.fromRGBO(255, 251, 230, 1),
       bottomNavigationBar: BottomNavigationBar(
         //backgroundColor: Color.fromRGBO(55, 99, 150, 1),
@@ -77,8 +78,20 @@ class _MainScreenState extends State<MainScreen> {
         ],
       ),
 
-      body:  _pages[_pageIndex],
-
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Color.fromARGB(255, 144, 199, 245), // Start color
+              Colors.white,   // End color
+            ],
+          ),
+        ),
+        child: _pages[_pageIndex],
+      ),
+      
       floatingActionButton: FloatingActionButton.extended(
         backgroundColor: const Color.fromARGB(255, 60, 128, 184),
         icon: Icon(Icons.chat,

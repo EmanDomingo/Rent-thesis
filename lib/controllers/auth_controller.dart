@@ -37,7 +37,7 @@ pickProfileImage(ImageSource source) async{
 }
 
   Future<String>signUpUSers(
-    String email, String fullName, String phoneNumber, String password, Uint8List? image) async {
+    String email, String fullName, String address, String phoneNumber, String password, Uint8List? image) async {
       String res = 'Some error occored';
 
 
@@ -45,6 +45,7 @@ pickProfileImage(ImageSource source) async{
         if (
           email.isNotEmpty &&
           fullName.isNotEmpty &&
+          address.isNotEmpty &&
           phoneNumber.isNotEmpty &&
           password.isNotEmpty &&
           image != null) {
@@ -59,7 +60,7 @@ pickProfileImage(ImageSource source) async{
             'fullName': fullName,
             'phoneNumber': phoneNumber,
             'buyerId': cred.user!.uid,
-            'address': '',
+            'address': address,
             'profileImage':profileImageUrl,
             }
           );

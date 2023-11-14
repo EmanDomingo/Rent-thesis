@@ -19,9 +19,12 @@ class _BuyerRegisterScreenState extends State<BuyerRegisterScreen> {
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
+
   late String email;
 
   late String fullName;
+
+  late String address;
 
   late String phoneNumber;
 
@@ -37,7 +40,7 @@ class _BuyerRegisterScreenState extends State<BuyerRegisterScreen> {
     });
     if (_formKey.currentState!.validate()) {
       await _authController
-          .signUpUSers(email, fullName, phoneNumber, password, _image)
+          .signUpUSers(email, fullName, address, phoneNumber, password, _image)
           .whenComplete(() {
         setState(() {
           _formKey.currentState!.reset();
@@ -75,127 +78,169 @@ class _BuyerRegisterScreenState extends State<BuyerRegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Center(
-      child: SingleChildScrollView(
-        child: Form(
-          key: _formKey,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'Create Customer"s Account',
-                style: TextStyle(fontSize: 20),
-              ),
-              Stack(
-                children: [
-                  _image != null
-                      ? CircleAvatar(
-                          radius: 64,
-                          backgroundColor: Colors.blue.shade400,
-                          backgroundImage: MemoryImage(_image!),
-                        )
-                      : CircleAvatar(
-                          radius: 64,
-                          backgroundColor: Colors.blue.shade400,
-                          backgroundImage: NetworkImage(
-                              'https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg'),
-                        ),
-                  Positioned(
-                    right: 0,
-                    top: 5,
-                    child: IconButton(
-                      onPressed: () {
-                        selectGalleryImage();
-                      },
-                      icon: Icon(CupertinoIcons.photo),
+        body: Container(
+          decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Color.fromARGB(255, 255, 255, 255),Color.fromARGB(255, 107, 174, 230),], // Add your gradient colors here
+          ),
+        ),
+          child: Center(
+              child: SingleChildScrollView(
+          child: Form(
+            key: _formKey,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Register Customer\'s Account',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blue,
+                  ),
+                ),
+                SizedBox(height: 20),
+                Stack(
+                  children: [
+                    _image != null
+                        ? CircleAvatar(
+                            radius: 64,
+                            backgroundColor: Colors.blue.shade400,
+                            backgroundImage: MemoryImage(_image!),
+                          )
+                        : CircleAvatar(
+                            radius: 64,
+                            backgroundColor: Colors.blue.shade400,
+                            backgroundImage: NetworkImage(
+                                'https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg'),
+                          ),
+                    Positioned(
+                      right: 0,
+                      top: 5,
+                      child: IconButton(
+                        onPressed: () {
+                          selectGalleryImage();
+                        },
+                        icon: Icon(CupertinoIcons.photo),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 20),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 14.0, vertical: 8.0),
+                  child: TextFormField(
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Please enter a valid email address';
+                      } else {
+                        return null;
+                      }
+                    },
+                    onChanged: (value) {
+                      email = value;
+                    },
+                    decoration: InputDecoration(
+                      labelText: 'Email',
+                      border: OutlineInputBorder(),
                     ),
                   ),
-                ],
-              ),
-              Padding(
-                padding: const EdgeInsets.all(14.0),
-                child: TextFormField(
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'Please Email must not be emty';
-                    } else {
-                      return null;
-                    }
-                  },
-                  onChanged: (value) {
-                    email = value;
-                  },
-                  decoration: InputDecoration(
-                    labelText: 'Enter Email',
+                ),
+        
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 14.0, vertical: 8.0),
+                  child: TextFormField(
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Please enter your full name';
+                      } else {
+                        return null;
+                      }
+                    },
+                    onChanged: (value) {
+                      fullName = value;
+                    },
+                    decoration: InputDecoration(
+                      labelText: 'Full Name',
+                      border: OutlineInputBorder(),
+                    ),
                   ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(13.0),
-                child: TextFormField(
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'Please Full Name must not be emty';
-                    } else {
-                      return null;
-                    }
-                  },
-                  onChanged: (value) {
-                    fullName = value;
-                  },
-                  decoration: InputDecoration(
-                    labelText: 'Enter Full Name',
+        
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 14.0, vertical: 8.0),
+                  child: TextFormField(
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Please enter your address';
+                      } else {
+                        return null;
+                      }
+                    },
+                    onChanged: (value) {
+                      address = value;
+                    },
+                    decoration: InputDecoration(
+                      labelText: 'Address',
+                      border: OutlineInputBorder(),
+                    ),
                   ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(13.0),
-                child: TextFormField(
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'Please Phone Number must not be emty';
-                    } else {
-                      return null;
-                    }
-                  },
-                  onChanged: (value) {
-                    phoneNumber = value;
-                  },
-                  decoration: InputDecoration(
-                    labelText: 'Enter Phone Number',
+        
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 14.0, vertical: 8.0),
+                  child: TextFormField(
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Please enter a valid phone number';
+                      } else {
+                        return null;
+                      }
+                    },
+                    onChanged: (value) {
+                      phoneNumber = value;
+                    },
+                    decoration: InputDecoration(
+                      labelText: 'Phone Number',
+                      border: OutlineInputBorder(),
+                    ),
                   ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(13.0),
-                child: TextFormField(
-                  obscureText: true,
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'Please Password must not be emty';
-                    } else {
-                      return null;
-                    }
-                  },
-                  onChanged: (value) {
-                    password = value;
-                  },
-                  decoration: InputDecoration(
-                    labelText: 'Password',
+        
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 14.0, vertical: 8.0),
+                  child: TextFormField(
+                    obscureText: true,
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Please enter a secure password';
+                      } else {
+                        return null;
+                      }
+                    },
+                    onChanged: (value) {
+                      password = value;
+                    },
+                    decoration: InputDecoration(
+                      labelText: 'Password',
+                      border: OutlineInputBorder(),
+                    ),
                   ),
                 ),
-              ),
-              InkWell(
-                onTap: () {
-                  Navigator.of(context).pushAndRemoveUntil(
-                      MaterialPageRoute(builder: (context) => MainScreen()),
-                      (route) => false);
-                },
-                child: GestureDetector(
+                SizedBox(height: 20),
+                InkWell(
                   onTap: () {
-                    _signUpUser();
+                    Navigator.of(context).pushAndRemoveUntil(
+                        MaterialPageRoute(builder: (context) => MainScreen()),
+                        (route) => false);
                   },
-                  child: Container(
+                  child: GestureDetector(
+                    onTap: () {
+                      _signUpUser();
+                    },
+                    child: Container(
                     width: MediaQuery.of(context).size.width - 40,
                     height: 50,
                     decoration: BoxDecoration(
@@ -210,80 +255,81 @@ class _BuyerRegisterScreenState extends State<BuyerRegisterScreen> {
                         ),
                       ],
                     ),
-                    child: Center(
-                        child: _isLoading
-                            ? CircularProgressIndicator(
-                                color: Colors.white,
-                              )
-                            : Text(
-                                'Register',
-                                style: TextStyle(
+                      child: Center(
+                          child: _isLoading
+                              ? CircularProgressIndicator(
                                   color: Colors.white,
-                                  fontSize: 19,
-                                  fontWeight: FontWeight.bold,
-                                  letterSpacing: 3,
-                                ),
-                              )),
+                                )
+                              : Text(
+                                  'Register',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 19,
+                                    fontWeight: FontWeight.bold,
+                                    letterSpacing: 3,
+                                  ),
+                                )),
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Already Have An Account?',
-                    style: TextStyle(
-                      fontSize: 15,
-                    ),
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) {
-                        return LoginScreen();
-                      }));
-                    },
-                    child: Text(
-                      'Login',
+                SizedBox(
+                  height: 5,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Already Have An Account?',
                       style: TextStyle(
-                        fontSize: 18,
+                        fontSize: 15,
                       ),
                     ),
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Create Owners Account?',
-                    style: TextStyle(
-                      fontSize: 15,
-                    ),
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) {
-                        return OwnerAuthScreen();
-                      }));
-                    },
-                    child: Text(
-                      'Create',
-                      style: TextStyle(
-                        fontSize: 18,
+                    TextButton(
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return LoginScreen();
+                        }));
+                      },
+                      child: Text(
+                        'Login',
+                        style: TextStyle(
+                          fontSize: 18,
+                        ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-            ],
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Create Owners Account?',
+                      style: TextStyle(
+                        fontSize: 15,
+                      ),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return OwnerAuthScreen();
+                        }));
+                      },
+                      child: Text(
+                        'Create',
+                        style: TextStyle(
+                          fontSize: 18,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
-        ),
-      ),
-    ));
+              ),
+            ),
+        ));
   }
 }
