@@ -2,6 +2,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:rental_app/owner/views/auth/screens/chat_owner.dart';
 import 'package:rental_app/owner/views/auth/screens/earnings_screen.dart';
 import 'package:rental_app/owner/views/auth/screens/edit_reservation_screen.dart';
 import 'package:rental_app/owner/views/auth/screens/owner_logout_screen.dart';
@@ -21,6 +22,7 @@ class _MainOwnerScreenState extends State<MainOwnerScreen> {
   List<Widget> _pages = [
     EarningsScreen(),
     UploadScreen(),
+    ChatOwnerScreen(),
     EditReservationScreen(),
     OwnerReservationScreen(),
     OwnerLogoutScreen(),
@@ -43,6 +45,7 @@ class _MainOwnerScreenState extends State<MainOwnerScreen> {
         items: [
         BottomNavigationBarItem(icon: Icon(CupertinoIcons.home), label: 'HOME'),
         BottomNavigationBarItem(icon: Icon(Icons.upload), label: 'UPLOAD'),
+        BottomNavigationBarItem(icon: Icon(Icons.chat), label: 'CHAT'),
         BottomNavigationBarItem(icon: Icon(Icons.edit), label: 'EDIT'),
         BottomNavigationBarItem(icon: Icon(CupertinoIcons.house), label: 'RESERVATION'),
         BottomNavigationBarItem(icon: Icon(Icons.logout), label: 'LOGOUT'),

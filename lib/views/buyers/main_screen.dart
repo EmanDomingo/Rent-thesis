@@ -2,10 +2,10 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:rental_app/views/buyers/chatbot/chatbot.dart';
 import 'package:rental_app/views/buyers/nav_screens/account_screen.dart';
 import 'package:rental_app/views/buyers/nav_screens/cart_screen.dart';
 import 'package:rental_app/views/buyers/nav_screens/category_screen.dart';
+import 'package:rental_app/views/buyers/nav_screens/chat_screen.dart';
 import 'package:rental_app/views/buyers/nav_screens/confirm_screen.dart';
 import 'package:rental_app/views/buyers/nav_screens/home_screen.dart';
 import 'package:rental_app/views/buyers/nav_screens/search_screen.dart';
@@ -25,6 +25,7 @@ class _MainScreenState extends State<MainScreen> {
     HomeScreen(),
     CategoryScreen(),
     StoreScreen(),
+    ChatMessageScreen(),
     SearchScreen(),
     CartScreen(),
     ConfirmScreen(),
@@ -60,6 +61,10 @@ class _MainScreenState extends State<MainScreen> {
           label: 'LIST OWNERS',
           ),
         BottomNavigationBarItem(
+          icon: Icon(CupertinoIcons.chat_bubble),
+          label: 'CHAT',
+          ),
+        BottomNavigationBarItem(
           icon: Icon(CupertinoIcons.search),
           label: 'SEARCH',
           ),
@@ -92,20 +97,20 @@ class _MainScreenState extends State<MainScreen> {
         child: _pages[_pageIndex],
       ),
       
-      floatingActionButton: FloatingActionButton.extended(
-        backgroundColor: const Color.fromARGB(255, 60, 128, 184),
-        icon: Icon(Icons.chat,
-        color: Colors.white,),
-        label: Text("Chat",
-        style: TextStyle(
-          color: Colors.white
-        ),),
-        tooltip: 'Connect to Assistant',
-        onPressed: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return Chatbot();
-            }));
-        },),
+      // floatingActionButton: FloatingActionButton.extended(
+      //   backgroundColor: const Color.fromARGB(255, 60, 128, 184),
+      //   icon: Icon(Icons.chat,
+      //   color: Colors.white,),
+      //   label: Text("Chat",
+      //   style: TextStyle(
+      //     color: Colors.white
+      //   ),),
+      //   tooltip: 'Connect to Assistant',
+      //   onPressed: () {
+      //     Navigator.push(context, MaterialPageRoute(builder: (context) {
+      //       return Chatbot();
+      //       }));
+      //   },),
     );
   }
 }
