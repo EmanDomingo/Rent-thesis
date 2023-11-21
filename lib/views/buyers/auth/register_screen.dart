@@ -4,7 +4,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:rental_app/controllers/auth_controller.dart';
-import 'package:rental_app/owner/views/auth/owner_auth_screen.dart';
 import 'package:rental_app/utils/show_snackBar.dart';
 import 'package:rental_app/views/buyers/auth/login_screen.dart';
 import 'package:rental_app/views/buyers/main_screen.dart';
@@ -306,31 +305,6 @@ class _BuyerRegisterScreenState extends State<BuyerRegisterScreen> {
                       },
                       child: Text(
                         'Login',
-                        style: TextStyle(
-                          fontSize: 18,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Create Owners Account?',
-                      style: TextStyle(
-                        fontSize: 15,
-                      ),
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) {
-                          return OwnerAuthScreen();
-                        }));
-                      },
-                      child: Text(
-                        'Create',
                         style: TextStyle(
                           fontSize: 18,
                         ),

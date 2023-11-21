@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:rental_app/owner/views/auth/owner_auth_screen.dart';
 import 'package:rental_app/views/buyers/auth/login_screen.dart';
 import 'package:rental_app/views/buyers/inner_screens/edit_profile.dart';
 import 'package:rental_app/views/buyers/inner_screens/reservation_screen.dart';
@@ -249,6 +250,40 @@ class AccountScreen extends StatelessWidget {
                           ),
                           title: Text('Approval'),
                         ),
+                        ListTile(
+                          onTap: () async {
+                            final confirmLogout = await showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  title: Text('Confirmation'),
+                                  content: Text('Are you sure you want to login owner\'s account?'),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () => Navigator.pop(context, false),
+                                      child: Text('Cancel', style: TextStyle(color: Colors.blue)),
+                                    ),
+                                    ElevatedButton(
+                                      onPressed: () => Navigator.pop(context, true),
+                                      child: Text('Yes', style: TextStyle(color: Colors.green)),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+
+                            if (confirmLogout) {
+                              await _auth.signOut().whenComplete(() {
+                                Navigator.push(context,
+                                    MaterialPageRoute(builder: (context) {
+                                      return OwnerAuthScreen();
+                                    }));
+                              });
+                            }
+                          },
+                        leading: Icon(Icons.person),
+                        title: Text('Login Owner\'s Account'),
+                      ),
                         ListTile(
                           onTap: () async {
                             await _auth.signOut().whenComplete(() {
