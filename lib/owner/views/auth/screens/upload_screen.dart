@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:provider/provider.dart';
 import 'package:rental_app/owner/views/auth/screens/main_owner_screen.dart';
+import 'package:rental_app/owner/views/auth/screens/upload_tap_screens/attributes_tab_screens.dart';
 import 'package:rental_app/owner/views/auth/screens/upload_tap_screens/general_screen.dart';
 import 'package:rental_app/owner/views/auth/screens/upload_tap_screens/images_tab_screen.dart';
 import 'package:rental_app/provider/product_provider.dart';
@@ -21,7 +22,7 @@ class UploadScreen extends StatelessWidget {
     Provider.of<ProductProvider>(context);
 
     return DefaultTabController(
-      length: 2,
+      length: 3,
       child: Form(
         key: _formKey,
         child: Scaffold(
@@ -37,6 +38,13 @@ class UploadScreen extends StatelessWidget {
               ),),
               ),
               //Tab(child: Text('Shipping'),),
+              Tab(child: Text('Attributes',
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.white,
+                letterSpacing: 3,
+              ),),
+              ),
               Tab(child: Text('Images',
               style: TextStyle(
                 fontSize: 16,
@@ -49,6 +57,7 @@ class UploadScreen extends StatelessWidget {
       
           body: TabBarView(children: [
             GeneralScreen(),
+            AttributesTabScreen(),
             ImagesTabScreen(),
           ],),
       
@@ -77,7 +86,7 @@ class UploadScreen extends StatelessWidget {
                     'imageUrl': _productProvider.productData['imageUrlList'],
                     'scheduleDate': _productProvider.productData['scheduleDate'],
                     //'brandName': _productProvider.productData['brandName'],
-                    //'sizeList': _productProvider.productData['sizeList'],
+                    'sizeList': _productProvider.productData['sizeList'],
                     'ownerId': FirebaseAuth.instance.currentUser!.uid,
                     'approved': false,
                   }).whenComplete(() {

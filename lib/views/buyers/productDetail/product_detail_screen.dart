@@ -6,6 +6,7 @@ import 'package:intl/intl.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:provider/provider.dart';
 import 'package:rental_app/provider/cart_provider.dart';
+import 'package:rental_app/utils/show_snackBar.dart';
 //import 'package:rental_app/utils/show_snackBar.dart';
 
 
@@ -28,7 +29,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
   }
 
   int _imageIndex = 0;
-  //String? _selectedSize;
+  String? _selectedSize;
 
   @override
   Widget build(BuildContext context) {
@@ -182,41 +183,68 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
             ),
 
             ExpansionTile(
-              title: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text('Rental Description',
-                style: TextStyle(
-                  color: Color.fromRGBO(53, 61, 104, 1),
-                  fontWeight: FontWeight.bold,
-                ),),
-      
-                Text('View More',
-                style: TextStyle(
-                  color: Color.fromRGBO(53, 61, 104, 1),
-                  fontWeight: FontWeight.bold,
+                title: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text('Rental Description',
+                  style: TextStyle(
+                    color: Color.fromRGBO(53, 61, 104, 1),
+                    fontWeight: FontWeight.bold,
                   ),),
+                    
+                  Text('View More',
+                  style: TextStyle(
+                    color: Color.fromRGBO(53, 61, 104, 1),
+                    fontWeight: FontWeight.bold,
+                    ),),
+                  ],
+                ),
+              
+                    
+                children: [
+                  Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        widget.productData['description'],
+                        style: TextStyle(
+                          fontSize: 17,
+                          color: Color.fromRGBO(53, 61, 104, 1),
+                        ),
+                        textAlign: TextAlign.start,
+                      ),
+                    ),
                 ],
               ),
-
-      
-              children: [
-                SingleChildScrollView(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      widget.productData['description'],
-                      style: TextStyle(
-                        fontSize: 17,
-                        color: Color.fromRGBO(53, 61, 104, 1),
+              ExpansionTile(title: Text('Available Size',),
+            children: [
+              Container(
+                height: 50,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: widget.productData['sizeList'].length,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        color: _selectedSize == widget.productData['sizeList'][index]
+                        ? Colors.blue.shade300
+                        : null,
+                        child: OutlinedButton(
+                          onPressed: () {
+                            setState(() {
+                              _selectedSize = widget.productData['sizeList'][index];
+                            });
+                            print (_selectedSize);
+                      
+                          },
+                          child: Text(
+                          widget.productData['sizeList'][index])),
                       ),
-                      textAlign: TextAlign.start,
-                    ),
-                  ),
-                )
-              ],
+                    );
+                }),
+              )
+            ],
             ),
-
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(
@@ -231,7 +259,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                 ],
               ),
             ),
-
+            
             Text(
                     widget.productData['productSubmeter'],
                     style: TextStyle(
@@ -241,7 +269,6 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                     ),
                     textAlign: TextAlign.start,
                   ),
-
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(
@@ -264,50 +291,20 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                     ),
                     textAlign: TextAlign.start,
                   ),
-            // ExpansionTile(title: Text('Available Size',),
-            // children: [
-            //   Container(
-            //     height: 50,
-            //     child: ListView.builder(
-            //       scrollDirection: Axis.horizontal,
-            //       itemCount: widget.productData['sizeList'].length,
-            //       itemBuilder: (context, index) {
-            //         return Padding(
-            //           padding: const EdgeInsets.all(8.0),
-            //           child: Container(
-            //             color: _selectedSize == widget.productData['sizeList'][index]
-            //             ? Colors.blue.shade300
-            //             : null,
-            //             child: OutlinedButton(
-            //               onPressed: () {
-            //                 setState(() {
-            //                   _selectedSize = widget.productData['sizeList'][index];
-            //                 });
-            //                 print (_selectedSize);
-                      
-            //               },
-            //               child: Text(
-            //               widget.productData['sizeList'][index])),
-            //           ),
-            //         );
-            //     }),
-            //   )
-            // ],
-            // )
-          ],
+            ],
         ),
       ),
 
       bottomSheet: Padding(
         padding: const EdgeInsets.all(8.0),
         child: InkWell(
-          onTap: //_cartProvider.getCartItem.containsKey(widget.productData['productId'])
-          //? null
-          //:
+          onTap: _cartProvider.getCartItem.containsKey(widget.productData['productId'])
+          ? null
+          :
           () {
-            // if(_selectedSize==null) {
-            //   return showSnack(context, 'Please Select A Size');
-            // } else {
+            if(_selectedSize==null) {
+              return showSnack(context, 'Please Select A Size');
+            } else {
               _cartProvider.addProductToCart(
               widget.productData['productName'],
               widget.productData['productId'],
@@ -317,17 +314,17 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               widget.productData['productPrice'],
               widget.productData['ownerId'],
               widget.productData['productAddress'],
-              //_selectedSize!,
               widget.productData['productContnum'],
               widget.productData['productSubmeter'],
               widget.productData['category'],
               widget.productData['productPets'],
+              _selectedSize!,
               widget.productData['scheduleDate'],
               );
 
-              //return showSnack(context,
-              //'You Added ${widget.productData['productName']} To Your Reservation');
-            //}
+              return showSnack(context,
+              'You Added ${widget.productData['productName']} To Your Reservation');
+            }
           },
           child: Container(
             height: 50,

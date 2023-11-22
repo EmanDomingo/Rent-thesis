@@ -274,10 +274,10 @@ class AccountScreen extends StatelessWidget {
 
                             if (confirmLogout) {
                               await _auth.signOut().whenComplete(() {
-                                Navigator.push(context,
-                                    MaterialPageRoute(builder: (context) {
-                                      return OwnerAuthScreen();
-                                    }));
+                              Navigator.pushReplacement(context,
+                                  MaterialPageRoute(builder: (context) {
+                                    return OwnerAuthScreen();
+                                  }));
                               });
                             }
                           },
@@ -287,10 +287,10 @@ class AccountScreen extends StatelessWidget {
                         ListTile(
                           onTap: () async {
                             await _auth.signOut().whenComplete(() {
-                              Navigator.push(context,
+                              Navigator.pushReplacement(context,
                                   MaterialPageRoute(builder: (context) {
-                                return LoginScreen();
-                              }));
+                                    return LoginScreen();
+                                  }));
                             });
                           },
                           leading: Icon(Icons.logout),

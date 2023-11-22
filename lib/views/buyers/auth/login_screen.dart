@@ -33,8 +33,6 @@ class _LoginScreenState extends State<LoginScreen> {
       } else {
         return showSnack(context, res);
       }
-    } else {
-      return showSnack(context, 'You Are Now Logged In');
     }
   }
 

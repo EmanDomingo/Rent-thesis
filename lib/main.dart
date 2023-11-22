@@ -8,7 +8,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:provider/provider.dart';
 import 'package:rental_app/provider/cart_provider.dart';
 import 'package:rental_app/provider/product_provider.dart';
-import 'package:rental_app/views/buyers/auth/login_screen.dart';
+import 'package:rental_app/views/buyers/main_screen.dart';
 //import 'chat.dart';
 
 void main() async {
@@ -53,7 +53,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         //fontFamily: 'JosefinSans',//fontFamily: 'IndustrialSans'
       ),
-      home: LoginScreen(),
+      home: MainScreen(),
       builder: EasyLoading.init(),
     );
   }

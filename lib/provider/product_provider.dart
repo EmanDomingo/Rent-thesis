@@ -16,7 +16,7 @@ class ProductProvider with ChangeNotifier{
     String? productSubmeter,
     String? productPets,
     String? productAddress,
-
+    List<String>? sizeList,
     }){
 
     if (productName!=null) {
@@ -57,6 +57,10 @@ class ProductProvider with ChangeNotifier{
 
     if (imageUrlList != null) {
       productData['imageUrlList'] = imageUrlList;
+    }
+
+    if (sizeList != null) {
+      productData['sizeList'] = sizeList;
     }
 
     notifyListeners();

@@ -67,14 +67,7 @@ class CartScreen extends StatelessWidget {
                             color: Color.fromRGBO(53, 61, 104, 1),
                           ),
                         ),
-                        Text(
-                        cartData.productContnum,
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Color.fromRGBO(53, 61, 104, 1),
-                          ),
-                        ),
+                        
                         Text(
                         'P' + '' + cartData.price.toStringAsFixed(2),
                           style: TextStyle(
@@ -85,6 +78,15 @@ class CartScreen extends StatelessWidget {
                           ),
                         ),
 
+                        Text(
+                        cartData.productContnum,
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromRGBO(53, 61, 104, 1),
+                          ),
+                        ),
+                        
                         IconButton(
                               onPressed: () {
                                 _cartProvider.removeItem(

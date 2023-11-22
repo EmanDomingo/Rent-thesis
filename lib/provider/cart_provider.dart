@@ -34,7 +34,7 @@ class CartProvider with ChangeNotifier{
     String productSubmeter,
     String productPets,
     String category,
-    // String productSize,
+    String productSize,
     Timestamp scheduleDate,
     ) {
       if(_cartItems.containsKey(productId)){
@@ -47,7 +47,7 @@ class CartProvider with ChangeNotifier{
           // productQuantity: exitingCart.productQuantity,
           price: exitingCart.price,
           ownerId: exitingCart.ownerId,
-          // productSize: exitingCart.productSize,
+          productSize: exitingCart.productSize,
           productAddress: exitingCart.productAddress,
           productContnum: exitingCart.productContnum,
           productSubmeter: exitingCart.productSubmeter,
@@ -67,7 +67,7 @@ class CartProvider with ChangeNotifier{
           // productQuantity:productQuantity,
           price: price,
           ownerId: ownerId,
-          // productSize: productSize,
+          productSize: productSize,
           productAddress: productAddress,
           scheduleDate: scheduleDate,
           productContnum: productContnum,

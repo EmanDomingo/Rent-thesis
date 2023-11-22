@@ -130,7 +130,7 @@ class _GeneralScreenState extends State<GeneralScreen> with AutomaticKeepAliveCl
                 },
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
-                  labelText: 'Enter Rent Price',
+                  labelText: 'Enter rent price per month',
                 ),
               ),
               SizedBox(height: 30,),

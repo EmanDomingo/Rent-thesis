@@ -36,9 +36,9 @@ class OwnerLogoutScreen extends StatelessWidget{
                         child: Text('Yes', style: TextStyle(color: Colors.green)),
                         onPressed: () async {
                           await _auth.signOut().whenComplete(() {
-                            Navigator.push(context,
-                                MaterialPageRoute(builder: (context) {
-                                  return LoginScreen();
+                              Navigator.pushReplacement(context,
+                                  MaterialPageRoute(builder: (context) {
+                                    return LoginScreen();
                                 }));
                           });
                         },

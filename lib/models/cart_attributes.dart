@@ -18,8 +18,7 @@ class CartAttr with ChangeNotifier{
   final String productPets;
   final String category;
 
-  // final String productSize;
-
+  final String productSize;
   Timestamp scheduleDate;
 
   CartAttr(
@@ -30,7 +29,7 @@ class CartAttr with ChangeNotifier{
   // required this.productQuantity,
   required this.price,
   required this.ownerId,
-  // required this.productSize,
+  required this.productSize,
   required this.scheduleDate,
   required this.productAddress,
   required this.productContnum,
