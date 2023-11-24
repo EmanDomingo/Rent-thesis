@@ -9,8 +9,6 @@ import 'package:rental_app/views/buyers/nav_screens/category_screen.dart';
 import 'package:rental_app/views/buyers/nav_screens/chat_screen.dart';
 import 'package:rental_app/views/buyers/nav_screens/confirm_screen.dart';
 import 'package:rental_app/views/buyers/nav_screens/home_screen.dart';
-import 'package:rental_app/views/buyers/nav_screens/search_screen.dart';
-import 'package:rental_app/views/buyers/nav_screens/store_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -25,9 +23,9 @@ class _MainScreenState extends State<MainScreen> {
   List<Widget> _pages = [
     HomeScreen(),
     CategoryScreen(),
-    StoreScreen(),
+    // StoreScreen(),
     ChatMessageScreen(),
-    SearchScreen(),
+    // SearchScreen(),
     CartScreen(),
     ConfirmScreen(),
     AccountScreen(),
@@ -57,18 +55,18 @@ class _MainScreenState extends State<MainScreen> {
           icon: Icon(CupertinoIcons.circle_grid_3x3),
           label: 'CATEGORIES',
           ),
+        // BottomNavigationBarItem(
+        //   icon: Icon(CupertinoIcons.list_bullet),
+        //   label: 'LIST OWNERS',
+        //   ),
         BottomNavigationBarItem(
-          icon: Icon(CupertinoIcons.list_bullet),
+          icon: Icon(CupertinoIcons.list_bullet_below_rectangle),
           label: 'LIST OWNERS',
           ),
-        BottomNavigationBarItem(
-          icon: Icon(CupertinoIcons.chat_bubble),
-          label: 'CHAT',
-          ),
-        BottomNavigationBarItem(
-          icon: Icon(CupertinoIcons.search),
-          label: 'SEARCH',
-          ),
+        // BottomNavigationBarItem(
+        //   icon: Icon(CupertinoIcons.search),
+        //   label: 'SEARCH',
+        //   ),
         BottomNavigationBarItem(
           icon: Icon(Icons.house),
           label: 'RESERVATION',

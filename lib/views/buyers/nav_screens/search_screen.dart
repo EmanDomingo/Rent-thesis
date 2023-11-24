@@ -68,53 +68,58 @@ class _SearchScreenState extends State<SearchScreen> {
                 });
 
                 return SingleChildScrollView(
-                  child: Column(
-                    children: searchedData.map((e) {
-                      return GestureDetector(
-                        onTap: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) {
-                            return ProductDetailScreen(
-                              productData: e,
-                            );
-                          }));
-                        },
-                        child: Card(
-                          child: Row(
-                            children: [
-                              SizedBox(
-                                height: 150,
-                                width: 150,
-                                child: Image.network(e['imageUrl'][0]),
+  child: Column(
+    children: searchedData.map((e) => GestureDetector(
+      onTap: () {
+        Navigator.push(context,
+          MaterialPageRoute(builder: (context) => ProductDetailScreen(
+            productData: e,
+          )),
+        );
+      },
+      child: Card(
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              height: 175,
+              width: 175,
+              child: Image.network(e['imageUrl'][0]),
+            ),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      '' + e['productAddress'],
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                        color: Color.fromRGBO(53, 61, 104, 1),
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    Text(
+                      'Php.' +
+                          " " +
+                          e['productPrice'].toStringAsFixed(2),
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 2,
+                        color: Color.fromRGBO(242, 133, 0, 1),
+                      ),
+                    ),
+                                  ],
+                                ),
                               ),
-                              Column(
-                                children: [
-                                  Text(
-                                    '' + " " + e['productAddress'],
-                                    style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
-                                      color: Color.fromRGBO(53, 61, 104, 1),
-                                    ),
-                                  ),
-                                  Text(
-                                    'Php.' +
-                                        " " +
-                                        e['productPrice'].toStringAsFixed(2),
-                                    style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
-                                      letterSpacing: 2,
-                                      color: Color.fromRGBO(242, 133, 0, 1),
-                                    ),
-                                  ),
-                                ],
-                              )
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
-                      );
-                    }).toList(),
+                      ),
+                    )).toList(),
                   ),
                 );
               },

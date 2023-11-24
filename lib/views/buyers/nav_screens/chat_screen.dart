@@ -21,7 +21,7 @@ class _ChatMessageScreenState extends State<ChatMessageScreen> {
       appBar: AppBar(
         //elevation: 2,
         //backgroundColor: Color.fromARGB(255, 167, 215, 255),
-        title: Text('CHAT',
+        title: Text('LIST OWNERS',
         style: TextStyle(
           color: const Color.fromARGB(255, 60, 128, 184),
           fontFamily: 'JosefinSans',
@@ -60,17 +60,33 @@ class _ChatMessageScreenState extends State<ChatMessageScreen> {
     Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
 
     if (_auth.currentUser!.email != data['email']) {
-      return ListTile(
-        title: Text (data['bussinessName']),
-        onTap: () {
-          Navigator.push(context, MaterialPageRoute(
-            builder: ((context) => ChatPage(
-              receiverUserEmail: data['bussinessName'],
-              receiverUserID: data['ownerId'],
-            ))
-            )
-          );
-        },
+      return SingleChildScrollView(
+        child: Column(
+          children: [
+            ListTile(
+              title: Text (data['bussinessName'],
+              style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromRGBO(53, 61, 104, 1),
+                          ),
+                        ),
+                        subtitle: Text(data['countryValue']),
+                          leading: CircleAvatar(
+                            backgroundImage: NetworkImage(data['storeImage']),
+                          ),
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(
+                  builder: ((context) => ChatPage(
+                    receiverUserEmail: data['bussinessName'],
+                    receiverUserID: data['ownerId'],
+                  ))
+                  )
+                );
+              },
+            ),
+          ],
+        ),
       );
     } else {
       return Container();

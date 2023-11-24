@@ -70,6 +70,7 @@ class StoreDetailScreen extends StatelessWidget {
                     return ProductDetailScreen(productData: productData,);
                   }));
                 },
+                
 
                 child: Card(
                   elevation: 0.5,

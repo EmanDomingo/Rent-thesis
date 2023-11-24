@@ -2,7 +2,7 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:rental_app/views/buyers/nav_screens/cart_screen.dart';
+import 'package:rental_app/views/buyers/nav_screens/search_screen.dart';
 
 class WelcomeText extends StatelessWidget {
   const WelcomeText({
@@ -28,11 +28,11 @@ class WelcomeText extends StatelessWidget {
             onTap: ()  {
                 Navigator.push
                 (context, MaterialPageRoute(builder: (context) {
-                  return CartScreen();
+                  return SearchScreen();
                 }));
             },
             child: Container(
-              child: Icon(Icons.house,
+              child: Icon(Icons.search,
               color: const Color.fromARGB(255, 60, 128, 184),
               size: 43,
               ),

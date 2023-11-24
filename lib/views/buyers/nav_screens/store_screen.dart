@@ -61,8 +61,7 @@ class StoreScreen extends StatelessWidget {
                     Navigator.push(context,
                     MaterialPageRoute(builder: (context) {
                       return StoreDetailScreen(storeData: storeData,);
-                    })
-                    );
+                    }));
                   },
                   child: ListTile(
                     title: Text(storeData['bussinessName'],
