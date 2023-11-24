@@ -110,51 +110,132 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                 color: Color.fromRGBO(53, 61, 104, 1),
               ),),
             ),
-          
-            Text(
-              
-              widget.productData['productName'],
-            style: TextStyle(
-              color: Color.fromRGBO(53, 61, 104, 1),
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox(height: 5),
-            Text(
-              widget.productData['productContnum'],
-            style: TextStyle(
-              color: Color.fromRGBO(53, 61, 104, 1),
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              ),
-            ),
+            SizedBox(height: 20),
+            Padding(
+                      padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          // First Column
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                // Electric and Water Submeter
+                                Text(
+                                  'Name',
+                                  style: TextStyle(
+                                    color: Color.fromRGBO(94, 96, 104, 1),
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 15,
+                                  ),
+                                ),
+                                Text(
+                                  widget.productData['productName'],
+                                  style: TextStyle(
+                                    color: Color.fromRGBO(53, 61, 104, 1),
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                                SizedBox(height: 15),
+                              ],
+                            ),
+                          ),
+                          SizedBox(width: 100), // Add spacing between columns
+                          // Second Column
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                // Pets Allowed
+                                Text(
+                                  'Contact Number',
+                                  style: TextStyle(
+                                    color: Color.fromRGBO(94, 96, 104, 1),
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 13,
+                                  ),
+                                ),
+                                Text(
+                                widget.productData['productContnum'],
+                                  style: TextStyle(
+                                    color: Color.fromRGBO(53, 61, 104, 1),
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
 
             Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Text(
-                    widget.productData['category'],
-                  style: TextStyle(
-                    color: Color.fromRGBO(53, 61, 104, 1),
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                  ),),
-            
-                  Text(
-                    'Php.' + ' ' + widget.productData['productPrice'].toStringAsFixed(2),
-                    style: TextStyle(
-                      color: Color.fromRGBO(242,133,0,1),
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: 1,
+                      padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          // First Column
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                // Electric and Water Submeter
+                                Text(
+                                  'Type',
+                                  style: TextStyle(
+                                    color: Color.fromRGBO(94, 96, 104, 1),
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 15,
+                                  ),
+                                ),
+                                Text(
+                                  widget.productData['category'],
+                                  style: TextStyle(
+                                    color: Color.fromRGBO(53, 61, 104, 1),
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                                SizedBox(height: 15),
+                              ],
+                            ),
+                          ),
+                          SizedBox(width: 100), // Add spacing between columns
+                          // Second Column
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                // Pets Allowed
+                                Text(
+                                  'Monthly',
+                                  style: TextStyle(
+                                    color: Color.fromRGBO(94, 96, 104, 1),
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 13,
+                                  ),
+                                ),
+                                Text(
+                                'Php.' + ' ' + widget.productData['productPrice'].toStringAsFixed(2),
+                                  style: TextStyle(
+                                    color: Color.fromRGBO(53, 61, 104, 1),
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            ),
 
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -182,39 +263,149 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               ),
             ),
 
-            ExpansionTile(
-                title: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text('Rental Description',
-                  style: TextStyle(
-                    color: Color.fromRGBO(53, 61, 104, 1),
-                    fontWeight: FontWeight.bold,
-                  ),),
+            // ExpansionTile(
+            //     title: Row(
+            //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //     children: [
+            //       Text('Rental Description',
+            //       style: TextStyle(
+            //         color: Color.fromRGBO(53, 61, 104, 1),
+            //         fontWeight: FontWeight.bold,
+            //       ),),
                     
-                  Text('View More',
-                  style: TextStyle(
-                    color: Color.fromRGBO(53, 61, 104, 1),
-                    fontWeight: FontWeight.bold,
-                    ),),
-                  ],
-                ),
+            //       Text('View More',
+            //       style: TextStyle(
+            //         color: Color.fromRGBO(53, 61, 104, 1),
+            //         fontWeight: FontWeight.bold,
+            //         ),),
+            //       ],
+            //     ),
               
                     
-                children: [
-                  Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        widget.productData['description'],
+            //     children: [
+            //       Padding(
+            //           padding: const EdgeInsets.all(8.0),
+            //           child: Text(
+            //             widget.productData['description'],
+            //             style: TextStyle(
+            //               fontSize: 17,
+            //               color: Color.fromRGBO(53, 61, 104, 1),
+            //             ),
+            //             textAlign: TextAlign.start,
+            //           ),
+            //         ),
+            //     ],
+            //   ),
+
+              // Details ExpansionTile with Two Columns
+                ExpansionTile(
+                  title: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Details',
                         style: TextStyle(
-                          fontSize: 17,
                           color: Color.fromRGBO(53, 61, 104, 1),
+                          fontWeight: FontWeight.bold,
                         ),
-                        textAlign: TextAlign.start,
+                      ),
+                      Text(
+                        'View',
+                        style: TextStyle(
+                          color: Color.fromRGBO(53, 61, 104, 1),
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                  children: [
+                    // Two-Column Layout
+                    Padding(
+                      padding: const EdgeInsets.only(left: 15.0, right: 15.0),
+                      child: SingleChildScrollView(
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            // First Column
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  // Electric and Water Submeter
+                                  Text(
+                                    'Do Have Electric and Water Submeter?',
+                                    style: TextStyle(
+                                      color: Color.fromRGBO(94, 96, 104, 1),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 13,
+                                    ),
+                                  ),
+                                  Text(
+                                    widget.productData['productSubmeter'],
+                                    style: TextStyle(
+                                      color: Color.fromRGBO(53, 61, 104, 1),
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                  SizedBox(height: 25),
+                                  // Other details
+                                  Text(
+                                    'Other details',
+                                    style: TextStyle(
+                                      color: Color.fromRGBO(53, 61, 104, 1),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 15,
+                                    ),
+                                  ),
+                                  Text(
+                                    widget.productData['description'],
+                                    style: TextStyle(
+                                      color: Color.fromRGBO(53, 61, 104, 1),
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                  SizedBox(height: 25),
+                                ],
+                              ),
+                            ),
+                            SizedBox(width: 20), // Add spacing between columns
+                            // Second Column
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  // Pets Allowed
+                                  Text(
+                                    'Pets Allowed?',
+                                    style: TextStyle(
+                                      color: Color.fromRGBO(94, 96, 104, 1),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 13,
+                                    ),
+                                  ),
+                                  Text(
+                                    widget.productData['productPets'],
+                                    style: TextStyle(
+                                      color: Color.fromRGBO(53, 61, 104, 1),
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                ],
-              ),
+                  ],
+                ),
+
               ExpansionTile(title: Text('Available Size',),
             children: [
               Container(
@@ -237,60 +428,16 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                             print (_selectedSize);
                       
                           },
+                          
                           child: Text(
                           widget.productData['sizeList'][index])),
                       ),
                     );
                 }),
-              )
+              ),
+              SizedBox(height: 5),
             ],
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                children: [
-                  Text('Do Have Electric and Water Submeter?',
-                  style: TextStyle(
-                    color: Color.fromRGBO(53, 61, 104, 1),
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15,
-                  ),
-                  ),
-                ],
-              ),
-            ),
-            
-            Text(
-                    widget.productData['productSubmeter'],
-                    style: TextStyle(
-                      color: Color.fromRGBO(53, 61, 104, 1),
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    textAlign: TextAlign.start,
-                  ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                children: [
-                  Text('Pets Allowed?',
-                  style: TextStyle(
-                    color: Color.fromRGBO(53, 61, 104, 1),
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15,
-                  ),),
-                ],
-              ),
-            ),
-
-            Text(widget.productData['productPets'],
-                    style: TextStyle(
-                      color: Color.fromRGBO(53, 61, 104, 1),
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    textAlign: TextAlign.start,
-                  ),
             ],
         ),
       ),
