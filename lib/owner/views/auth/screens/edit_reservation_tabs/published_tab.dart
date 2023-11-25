@@ -63,18 +63,19 @@ class PublishedTab extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
                     children: [
+                      SizedBox(width: 8,),
                       Container(
                         height: 80,
                         width: 80,
                         child: Image.network(ownerProductData['imageUrl'][0]
                         ),
                       ),
-                
+                SizedBox(width: 15,),
                       Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            ownerProductData['productName'],
+                            '' + '' + ownerProductData['productName'],
                             style: TextStyle(
                               fontSize: 17,
                               fontWeight: FontWeight.bold,
@@ -82,7 +83,7 @@ class PublishedTab extends StatelessWidget {
                           ),
                 
                           Text(
-                          ownerProductData['productContnum'],
+                          '' + '' + ownerProductData['productContnum'],
                             style: TextStyle(
                               fontSize: 17,
                               fontWeight: FontWeight.bold,

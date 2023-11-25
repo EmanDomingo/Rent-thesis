@@ -333,7 +333,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                 children: [
                                   // Electric and Water Submeter
                                   Text(
-                                    'Do Have Electric and Water Submeter?',
+                                    'Number of bathroom',
                                     style: TextStyle(
                                       color: Color.fromRGBO(94, 96, 104, 1),
                                       fontWeight: FontWeight.bold,
@@ -341,7 +341,26 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                     ),
                                   ),
                                   Text(
-                                    widget.productData['productSubmeter'],
+                                    widget.productData['productBathroom'],
+                                    style: TextStyle(
+                                      color: Color.fromRGBO(53, 61, 104, 1),
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                  SizedBox(height: 25),
+
+                                  Text(
+                                    'Number of bedroom',
+                                    style: TextStyle(
+                                      color: Color.fromRGBO(94, 96, 104, 1),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 13,
+                                    ),
+                                  ),
+                                  Text(
+                                    widget.productData['productBedroom'],
                                     style: TextStyle(
                                       color: Color.fromRGBO(53, 61, 104, 1),
                                       fontSize: 15,
@@ -380,7 +399,26 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                 children: [
                                   // Pets Allowed
                                   Text(
-                                    'Pets Allowed?',
+                                    'Do have electric/water submeter?',
+                                    style: TextStyle(
+                                      color: Color.fromRGBO(94, 96, 104, 1),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 13,
+                                    ),
+                                  ),
+                                  Text(
+                                    widget.productData['productSubmeter'],
+                                    style: TextStyle(
+                                      color: Color.fromRGBO(53, 61, 104, 1),
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                  SizedBox(height: 25),
+
+                                  Text(
+                                    'Are pets allowed?',
                                     style: TextStyle(
                                       color: Color.fromRGBO(94, 96, 104, 1),
                                       fontWeight: FontWeight.bold,
@@ -406,7 +444,12 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   ],
                 ),
 
-              ExpansionTile(title: Text('Available Size',),
+              ExpansionTile(
+                title: Text('Available rooms or beds',
+                style: TextStyle(
+                          color: Color.fromRGBO(53, 61, 104, 1),
+                          fontWeight: FontWeight.bold,
+                        ),),
             children: [
               Container(
                 height: 50,
@@ -438,6 +481,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               SizedBox(height: 5),
             ],
             ),
+            SizedBox(height: 100),
             ],
         ),
       ),

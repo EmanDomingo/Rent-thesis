@@ -55,8 +55,9 @@ class _GeneralScreenState extends State<GeneralScreen> with AutomaticKeepAliveCl
         child: SingleChildScrollView(
           child: Column(
             children: [
+              SizedBox(height: 20,),
               DropdownButtonFormField(
-                hint: Text('Select Category'),
+                hint: Text('Select category'),
                 items: _categoryList.map<DropdownMenuItem<String>>((e) {
                 return DropdownMenuItem(
                   value: e,
@@ -71,7 +72,7 @@ class _GeneralScreenState extends State<GeneralScreen> with AutomaticKeepAliveCl
               TextFormField(
                 validator: (value) {
                   if(value!.isEmpty) {
-                    return 'Enter Your Full Name';
+                    return 'Enter full name';
                   } else {
                     return null;
                   }
@@ -80,14 +81,14 @@ class _GeneralScreenState extends State<GeneralScreen> with AutomaticKeepAliveCl
                   _productProvider.getFormData(productName: value);
                 },
                 decoration: InputDecoration(
-                  labelText: 'Enter Your Full Name',
+                  labelText: 'Enter full name',
                 ),
               ),
               SizedBox(height: 30,),
               TextFormField(
                 validator: (value) {
                   if(value!.isEmpty) {
-                    return 'Enter Rent Address';
+                    return 'Enter rent address';
                   } else {
                     return null;
                   }
@@ -96,14 +97,14 @@ class _GeneralScreenState extends State<GeneralScreen> with AutomaticKeepAliveCl
                   _productProvider.getFormData(productAddress: value);
                 },
                 decoration: InputDecoration(
-                  labelText: 'Enter Rent Address',
+                  labelText: 'Enter rent address',
                 ),
               ),
               SizedBox(height: 30,),
               TextFormField(
                 validator: (value) {
                   if(value!.isEmpty) {
-                    return 'Enter Your Contact Number';
+                    return 'Enter contact number';
                   } else {
                     return null;
                   }
@@ -113,14 +114,14 @@ class _GeneralScreenState extends State<GeneralScreen> with AutomaticKeepAliveCl
                 },
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
-                  labelText: 'Enter Your Contact Number',
+                  labelText: 'Enter contact number',
                 ),
               ),
               SizedBox(height: 30,),
               TextFormField(
                 validator: (value) {
                   if(value!.isEmpty) {
-                    return 'Enter Rent Price';
+                    return 'Enter rent price per month';
                   } else {
                     return null;
                   }
@@ -131,38 +132,6 @@ class _GeneralScreenState extends State<GeneralScreen> with AutomaticKeepAliveCl
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
                   labelText: 'Enter rent price per month',
-                ),
-              ),
-              SizedBox(height: 30,),
-              TextFormField(
-                validator: (value) {
-                  if(value!.isEmpty) {
-                    return 'Do Have Electric and Water Submeter?';
-                  } else {
-                    return null;
-                  }
-                },
-                onChanged: (value) {
-                  _productProvider.getFormData(productSubmeter: value);;
-                },
-                decoration: InputDecoration(
-                  labelText: 'Have Electric and Water Submeter?',
-                ),
-              ),
-              SizedBox(height: 30,),
-              TextFormField(
-                validator: (value) {
-                  if(value!.isEmpty) {
-                    return 'Pets Allowed?';
-                  } else {
-                    return null;
-                  }
-                },
-                onChanged: (value) {
-                  _productProvider.getFormData(productPets: value);;
-                },
-                decoration: InputDecoration(
-                  labelText: 'Pets Allowed?',
                 ),
               ),
               // SizedBox(height: 30,),
@@ -184,27 +153,6 @@ class _GeneralScreenState extends State<GeneralScreen> with AutomaticKeepAliveCl
               SizedBox(
                 height: 30,
                 ),
-              TextFormField(
-                validator: (value) {
-                  if(value!.isEmpty) {
-                    return 'Enter Other Description';
-                  } else {
-                    return null;
-                  }
-                },
-                onChanged: (value) {
-                  _productProvider.getFormData(description: value);
-                },
-                maxLines: 4,
-                maxLength: 300,
-                decoration: InputDecoration(
-                  labelText: 'Enter Other Description',
-                  border: OutlineInputBorder(
-                  borderRadius:BorderRadius.circular(10),
-                  ),
-                ),
-              ),
-
               Row(children: [
                 TextButton(
                   onPressed: () {
@@ -219,7 +167,11 @@ class _GeneralScreenState extends State<GeneralScreen> with AutomaticKeepAliveCl
                       });
                     });
                   },
-                child: Text('Reservation Due Date'),),
+                child: Text('Click reservation due date',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                ),),),
 
                 if(_productProvider.productData['scheduleDate']!=null)
                 
@@ -227,6 +179,9 @@ class _GeneralScreenState extends State<GeneralScreen> with AutomaticKeepAliveCl
                   _productProvider.productData['scheduleDate'],),
                 ),
               ],),
+              SizedBox(
+                height: 30,
+                ),
           ],
           ),
         ),

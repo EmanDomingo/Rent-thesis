@@ -100,7 +100,8 @@ class _ChatPageState extends State<ChatPage> {
           children: [
             Text(data['senderEmail']),
             const SizedBox(height: 5),
-            ChatBubble(message: data['message']),
+            ChatBubble(message: data['message'],
+            ),
           ],
         ),
       ),

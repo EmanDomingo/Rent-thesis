@@ -23,17 +23,22 @@ class _ImagesTabScreenState extends State<ImagesTabScreen> with AutomaticKeepAli
   List<File> _image = [];
   List<String> _imageUrlList = [];
 
-  choosImage()async{
-    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+  choosImage() async {
+  final pickedFile = await picker.pickImage(source: ImageSource.gallery);
 
-    if(pickedFile == null) {
-      print('no image picked');
-    } else {
-      setState(() {
-        _image.add(File(pickedFile.path));
-      });
-    }
+  if (pickedFile == null) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('No image picked'),
+        duration: Duration(seconds: 2),
+      ),
+    );
+  } else {
+    setState(() {
+      _image.add(File(pickedFile.path));
+    });
   }
+}
 
   @override
   Widget build(BuildContext context) {

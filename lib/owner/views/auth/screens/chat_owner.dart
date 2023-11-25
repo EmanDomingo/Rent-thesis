@@ -60,17 +60,32 @@ class _ChatMessageScreenState extends State<ChatOwnerScreen> {
     Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
 
     if (_auth.currentUser!.email != data['email']) {
-      return ListTile(
-        title: Text (data['fullName']),
-        onTap: () {
-          Navigator.push(context, MaterialPageRoute(
-            builder: ((context) => ChatPage(
-              receiverUserEmail: data['fullName'],
-              receiverUserID: data['buyerId'],
-            ))
-            )
-          );
-        },
+      return SingleChildScrollView(
+        child: Column(
+          children: [
+            ListTile(
+              title: Text (data['fullName'],
+              style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                  color: Color.fromRGBO(53, 61, 104, 1),
+                                ),
+                              ),
+                              subtitle: Text(data['email']),
+                                leading: CircleAvatar(
+                                  backgroundImage: NetworkImage(data['profileImage']),),
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(
+                  builder: ((context) => ChatPage(
+                    receiverUserEmail: data['fullName'],
+                    receiverUserID: data['buyerId'],
+                  ))
+                  )
+                );
+              },
+            ),
+          ],
+        ),
       );
     } else {
       return Container();
