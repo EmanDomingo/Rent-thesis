@@ -91,9 +91,9 @@ class _BuyerRegisterScreenState extends State<BuyerRegisterScreen> {
         body: Container(
           decoration: BoxDecoration(
           gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [Color.fromARGB(255, 255, 255, 255),Color.fromARGB(255, 107, 174, 230),], // Add your gradient colors here
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [Color.fromARGB(255, 107, 174, 230),Color.fromARGB(255, 255, 255, 255),Color.fromARGB(255, 107, 174, 230),], // Add your gradient colors here
           ),
         ),
           child: Center(
@@ -104,9 +104,9 @@ class _BuyerRegisterScreenState extends State<BuyerRegisterScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'Register Customer\'s Account',
+                  'Register Account',
                   style: TextStyle(
-                    fontSize: 24,
+                    fontSize: 27,
                     fontWeight: FontWeight.bold,
                     color: Colors.blue,
                   ),
@@ -124,7 +124,7 @@ class _BuyerRegisterScreenState extends State<BuyerRegisterScreen> {
                             radius: 64,
                             backgroundColor: Colors.blue.shade400,
                             backgroundImage: NetworkImage(
-                                'https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg'),
+                                'https://cdn3.vectorstock.com/i/thumb-large/60/82/user-icon-white-silhouette-on-blue-round-vector-20326082.jpg'),
                           ),
                           
                     Positioned(
@@ -284,6 +284,7 @@ class _BuyerRegisterScreenState extends State<BuyerRegisterScreen> {
                     ),
                   ),
                 ),
+                
                 SizedBox(
                   height: 5,
                 ),
@@ -291,7 +292,7 @@ class _BuyerRegisterScreenState extends State<BuyerRegisterScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'Already Have An Account?',
+                      'Already have a account?',
                       style: TextStyle(
                         fontSize: 15,
                       ),

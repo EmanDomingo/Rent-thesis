@@ -85,12 +85,9 @@ class _MainScreenState extends State<MainScreen> {
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            begin: Alignment.topCenter,
+            begin: Alignment.topLeft,
             end: Alignment.bottomCenter,
-            colors: [
-              Color.fromARGB(255, 144, 199, 245), // Start color
-              Colors.white,   // End color
-            ],
+            colors: [Color.fromARGB(255, 255, 255, 255),Color.fromARGB(255, 149, 207, 255),Color.fromARGB(255, 255, 255, 255),], // Add your gradient colors here
           ),
         ),
         child: _pages[_pageIndex],

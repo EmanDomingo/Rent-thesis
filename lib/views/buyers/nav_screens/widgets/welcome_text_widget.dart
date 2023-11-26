@@ -16,14 +16,11 @@ class WelcomeText extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text('TAGUIG CITY \n     Rent Application',
-          style: TextStyle(
-            fontFamily: 'JosefinSans',
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-            color: const Color.fromARGB(255, 60, 128, 184),
-          ),
-          ),
+          Image.asset(
+                        'assets/image/rentop3.png', // Replace with your image path
+                        height: 90, // Adjust the height as needed
+                        width: 90, // Adjust the width as needed
+                      ),
           InkWell(
             onTap: ()  {
                 Navigator.push
