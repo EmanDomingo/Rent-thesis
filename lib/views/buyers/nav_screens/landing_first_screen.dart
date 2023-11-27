@@ -73,7 +73,7 @@ class _LandingFirstScreenState extends State<LandingFirstScreen> {
                 },
                   child: Container(
                     height: 40,
-                    width: MediaQuery.of(context).size.width -225,
+                    width: MediaQuery.of(context).size.width -235,
                     decoration: BoxDecoration(
                       color: Colors.blue.shade400,
                       borderRadius: BorderRadius.circular(10),
@@ -106,7 +106,7 @@ class _LandingFirstScreenState extends State<LandingFirstScreen> {
                 },
                   child: Container(
                     height: 40,
-                    width: MediaQuery.of(context).size.width -150,
+                    width: MediaQuery.of(context).size.width -175,
                     decoration: BoxDecoration(
                       color: Colors.blue.shade400,
                       borderRadius: BorderRadius.circular(10),

@@ -31,7 +31,15 @@ class _ChatMessageScreenState extends State<ChatMessageScreen> {
         ),
       ),
 
-      body: _buildUserList(),
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Color.fromARGB(255, 255, 255, 255),Color.fromARGB(255, 189, 225, 255),Color.fromARGB(255, 255, 255, 255),], // Add your gradient colors here
+          ),
+        ),
+        child: _buildUserList()),
     );
   }
 
@@ -74,7 +82,8 @@ class _ChatMessageScreenState extends State<ChatMessageScreen> {
                         subtitle: Text(data['countryValue']),
                           leading: CircleAvatar(
                             backgroundImage: NetworkImage(data['storeImage']),
-                          ),
+                              
+                            ),
               onTap: () {
                 Navigator.push(context, MaterialPageRoute(
                   builder: ((context) => ChatPage(
@@ -85,6 +94,13 @@ class _ChatMessageScreenState extends State<ChatMessageScreen> {
                 );
               },
             ),
+            Padding(
+                              padding: const EdgeInsets.all(0.0),
+                              child: Divider(
+                                thickness: 1,
+                                color: Color.fromARGB(255, 214, 214, 214),
+                              ),
+                            ),
           ],
         ),
       );

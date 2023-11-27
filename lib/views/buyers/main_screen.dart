@@ -1,8 +1,6 @@
 
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:rental_app/views/buyers/chatbot/chatbot.dart';
 import 'package:rental_app/views/buyers/nav_screens/account_screen.dart';
 import 'package:rental_app/views/buyers/nav_screens/cart_screen.dart';
 import 'package:rental_app/views/buyers/nav_screens/category_screen.dart';
@@ -48,37 +46,29 @@ class _MainScreenState extends State<MainScreen> {
         selectedItemColor: Color.fromRGBO(39, 71, 107, 1),
         items: [
         BottomNavigationBarItem(
-          icon: Icon(CupertinoIcons.home),
-          label: 'HOME',
-          ),
-        BottomNavigationBarItem(
-          icon: Icon(CupertinoIcons.circle_grid_3x3),
-          label: 'CATEGORIES',
-          ),
-        // BottomNavigationBarItem(
-        //   icon: Icon(CupertinoIcons.list_bullet),
-        //   label: 'LIST OWNERS',
-        //   ),
-        BottomNavigationBarItem(
-          icon: Icon(CupertinoIcons.list_bullet_below_rectangle),
-          label: 'LIST OWNERS',
-          ),
-        // BottomNavigationBarItem(
-        //   icon: Icon(CupertinoIcons.search),
-        //   label: 'SEARCH',
-        //   ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.house),
-          label: 'RESERVATION',
-          ),
-        BottomNavigationBarItem(
-          icon: Icon(CupertinoIcons.heart),
-          label: 'APPROVAL',
-          ),
-        BottomNavigationBarItem(
-          icon: Icon(CupertinoIcons.person),
-          label: 'ACCOUNT',
-          ),
+      icon: Icon(Icons.home_filled),
+      label: 'Home',
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(Icons.list_alt_rounded),
+      label: 'Categories',
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(Icons.format_list_numbered_rounded),
+      label: 'List Owners',
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(Icons.house_siding_rounded),
+      label: 'Reservation',
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(Icons.check_circle_outline_rounded),
+      label: 'Approval',
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(Icons.person_rounded),
+      label: 'Account',
+    ),
         ],
       ),
 
@@ -93,20 +83,20 @@ class _MainScreenState extends State<MainScreen> {
         child: _pages[_pageIndex],
       ),
       
-      floatingActionButton: FloatingActionButton.extended(
-        backgroundColor: const Color.fromARGB(255, 60, 128, 184),
-        icon: Icon(Icons.chat,
-        color: Colors.white,),
-        label: Text("Chat",
-        style: TextStyle(
-          color: Colors.white
-        ),),
-        tooltip: 'Connect to Assistant',
-        onPressed: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return Chatbot();
-            }));
-        },),
+      // floatingActionButton: FloatingActionButton.extended(
+      //   backgroundColor: const Color.fromARGB(255, 60, 128, 184),
+      //   icon: Icon(Icons.chat,
+      //   color: Colors.white,),
+      //   label: Text("Chat",
+      //   style: TextStyle(
+      //     color: Colors.white
+      //   ),),
+      //   tooltip: 'Connect to Assistant',
+      //   onPressed: () {
+      //     Navigator.push(context, MaterialPageRoute(builder: (context) {
+      //       return Chatbot();
+      //       }));
+      //   },),
     );
   }
 }

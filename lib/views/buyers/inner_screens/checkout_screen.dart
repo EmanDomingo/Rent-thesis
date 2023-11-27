@@ -51,77 +51,89 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
         ),
       ),
 
-      body: ListView.builder(
-        shrinkWrap: true,
-        itemCount: _cartProvider.getCartItem.length,
-        itemBuilder: (context, index) {
-          final cartData = _cartProvider.getCartItem.values.toList()[index];
-          return Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Card(
-              child: SizedBox(
-              height: 170,
-              child: Row(
-                children: [
-                  SizedBox(
-                    height: 100,
-                    width: 100,
-                    child: Image.network(cartData.imageUrl[0]),
-                  ),
-          
-                  Padding(
-                    padding: const EdgeInsets.all(13.0),
-                    child: SingleChildScrollView(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            cartData.productName,
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              color: Color.fromRGBO(53, 61, 104, 1),
-                            ),
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Color.fromARGB(255, 255, 255, 255),Color.fromARGB(255, 149, 207, 255),], // Add your gradient colors here
+          ),
+        ),
+        child: ListView.builder(
+          shrinkWrap: true,
+          itemCount: _cartProvider.getCartItem.length,
+          itemBuilder: (context, index) {
+            final cartData = _cartProvider.getCartItem.values.toList()[index];
+            return Padding(
+              padding: const EdgeInsets.all(0.0),
+              child: Card(
+                child: SizedBox(
+                height: 170,
+                child: Row(
+                  children: [
+                    SizedBox(width: 15,),
+                    SizedBox(
+                      height: 100,
+                      width: 100,
+                      child: Image.network(cartData.imageUrl[0]),
+                    ),
+            
+                    Padding(
+                      padding: const EdgeInsets.all(13.0),
+                      child: SingleChildScrollView(
+                        child: Container(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                cartData.productName,
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w500,
+                                  color: Color.fromRGBO(53, 61, 104, 1),
+                                ),
+                              ),
+                              Text(
+                              cartData.productContnum,
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w500,
+                                  color: Color.fromRGBO(53, 61, 104, 1),
+                                ),
+                              ),
+                              
+                              Text(
+                              'PHP.' + ' ' + cartData.price.toStringAsFixed(2),
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w500,
+                                  letterSpacing: 2,
+                                  color: Colors.yellow.shade900,
+                                ),
+                              ),
+                                              
+                              // OutlinedButton(
+                              //   onPressed: null,
+                              //   child: Text(
+                              //     cartData.productSize,
+                              //   ),
+                              // ),
+                                              
+                              
+                            ],
                           ),
-                          Text(
-                          cartData.productContnum,
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              color: Color.fromRGBO(53, 61, 104, 1),
-                            ),
-                          ),
-                          
-                          Text(
-                          'Php' + '' + cartData.price.toStringAsFixed(2),
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              letterSpacing: 3,
-                              color: Colors.yellow.shade900,
-                            ),
-                          ),
-                    
-                          // OutlinedButton(
-                          //   onPressed: null,
-                          //   child: Text(
-                          //     cartData.productSize,
-                          //   ),
-                          // ),
-                    
-                          
-                        ],
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
+                
+                ),
               ),
-              
-              ),
-            ),
-          );
-        }),
+            );
+          }),
+      ),
 
         bottomSheet: data['address'] == ''
         ? TextButton(
@@ -156,7 +168,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                   'productId':item.productId,
                   'productImage':item.imageUrl,
                   // 'quantity':item.productQuantity,
-                  // 'productSize':item.productSize,
+                  'productSize':item.productSize,
                   'scheduleDate':item.scheduleDate,
                   'orderDate':DateTime.now(),
                   'accepted': false,
@@ -176,7 +188,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
             } ,
             child: Container(
               height: 50,
-              width: MediaQuery.of(context).size.width,
+              width: MediaQuery.of(context).size.width -40,
               decoration: BoxDecoration(
                 color: Colors.blue.shade300,
                 borderRadius: BorderRadius.circular(10),
@@ -195,7 +207,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                   'PLACE RESERVATION',
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 18,
+                    fontSize: 19,
                     fontWeight: FontWeight.bold,
                   ),
                 ),

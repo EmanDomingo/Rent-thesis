@@ -24,10 +24,11 @@ class _CategoryTextState extends State<CategoryText> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Categories',
+            'Suggestions',
             style: TextStyle(
               fontSize: 19,
               fontWeight: FontWeight.bold,
+              color: Color.fromRGBO(53, 61, 104, 1),
             ),
             ),
 

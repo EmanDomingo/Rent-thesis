@@ -51,7 +51,7 @@ class MyApp extends StatelessWidget {
         colorScheme:
             ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 0, 0, 0)),
         useMaterial3: true,
-        //fontFamily: 'JosefinSans',//fontFamily: 'IndustrialSans'
+        fontFamily: 'JosefinSans',//fontFamily: 'IndustrialSans'
       ),
       home: LandingFirstScreen(),
       builder: EasyLoading.init(),

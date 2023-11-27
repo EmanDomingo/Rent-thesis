@@ -118,7 +118,7 @@ class StoreDetailScreen extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
-                          'Php.' + " " + productData['productPrice'].toStringAsFixed(2),
+                          'PHP.' + " " + productData['productPrice'].toStringAsFixed(2),
                             style: TextStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.bold,

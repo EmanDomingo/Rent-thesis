@@ -42,133 +42,148 @@ class ConfirmScreen extends StatelessWidget {
         ],
       ),
 
-      body: StreamBuilder<QuerySnapshot>(
-      stream: _ordersStream,
-      builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-        if (snapshot.hasError) {
-          return Text('Something went wrong');
-        }
-
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return Center(
-            child: CircularProgressIndicator(
-              color: Colors.blue.shade300,),
-          );
-        }
-
-        return ListView(
-          children: snapshot.data!.docs.map((DocumentSnapshot document) {
-
-            return Column(
-              children: [
-                ListTile(
-                  leading: CircleAvatar(
-                    backgroundColor: Colors.white,
-                    radius: 14,
-                    child: document['accepted']==true
-                    ? Icon(Icons.directions_walk)
-                    : Icon(Icons.access_time)),
-
-                    title: document['accepted'] == true
-                    ? Text('Accepted',
-                    style: TextStyle(
-                      color: Colors.green.shade500),)
-                    : Text('Not Accepted',
-                    style: TextStyle(
-                      color: Colors.red.shade500),),
-                      
-                    trailing: Text('Amount' + ' ' +
-                    document['productPrice'].toStringAsFixed(2),
-                    style: TextStyle(
-                      fontSize: 17,
-                      color: Colors.blue
-                    ),
-                    ),
-
-                    subtitle: Text(
-                      formatedDate(document['orderDate'].toDate()),
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Color.fromARGB(255, 255, 255, 255),Color.fromARGB(255, 189, 225, 255),Color.fromARGB(255, 255, 255, 255)], // Add your gradient colors here
+          ),
+        ),
+        child: StreamBuilder<QuerySnapshot>(
+        stream: _ordersStream,
+        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          if (snapshot.hasError) {
+            return Text('Something went wrong');
+          }
+        
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(
+              child: CircularProgressIndicator(
+                color: Colors.blue.shade300,),
+            );
+          }
+        
+          return ListView(
+            children: snapshot.data!.docs.map((DocumentSnapshot document) {
+        
+              return Column(
+                children: [
+                  ListTile(
+                    leading: CircleAvatar(
+                      backgroundColor: Colors.white,
+                      radius: 14,
+                      child: document['accepted']==true
+                      ? Icon(Icons.directions_walk)
+                      : Icon(Icons.access_time)),
+        
+                      title: document['accepted'] == true
+                      ? Text('Accepted',
                       style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.blue,
+                        color: Colors.green.shade500),)
+                      : Text('Pending',
+                      style: TextStyle(
+                        color: const Color.fromARGB(255, 244, 124, 54)),),
+                        
+                      trailing: Text('PHP.' + ' ' +
+                      document['productPrice'].toStringAsFixed(2),
+                      style: TextStyle(
+                        fontSize: 17,
+                        color: Colors.blue
                       ),
-                    ),
-                ),
-
-                ExpansionTile(title:
-                Text('Reservation Details',
-                style: TextStyle(
-                  color: Colors.blue.shade300,
-                  fontSize: 15,
-                    ),
+                      ),
+                      
+                      subtitle: Text(
+                        formatedDate(document['orderDate'].toDate()),
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.blue,
+                        ),
+                      ),
                   ),
-
-                  subtitle: Text('View Reservation Details'),
-                  children: [
-                    ListTile(
-                      leading: CircleAvatar(
-                        child: Image.network(document['productImage'][0]),
+        
+                  ExpansionTile(title:
+                  Text('Reservation Details',
+                  style: TextStyle(
+                    color: Colors.blue,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15,
                       ),
-
-                      title: Text(document['productName']),
-
-                      subtitle: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          // Row(
-                          //   mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          //   children: [
-                          //     Text(('Quantity'),
-                          //     style: TextStyle(
-                          //       fontSize: 14,
-                          //       fontWeight: FontWeight.bold,
-                          //     ),),
-
-                          //     Text(document['quantity'].toString(),),
-                          //   ],
-                          // ),
-
-                          document['accepted'] == true
-                          ? Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Text('Schedule Reservation Date'),
-                              Text(formatedDate(
-                            document['scheduleDate'].toDate())),
-                            ],
-                          )
-                          : Text(''),
-
-                          ListTile(
-                            title: Text(
-                              'Customer Details',
-                              style: TextStyle(
-                                fontSize: 18,
-                              ),
-                            ),
-
-                            subtitle: Column(
+                    ),
+        
+                    subtitle: Text('View Reservation Details',),
+                    children: [
+                      ListTile(
+                        leading: CircleAvatar(
+                          radius: 40, // Adjust the radius to your desired size
+                          child: Image.network(
+                            document['productImage'][0],
+                            fit: BoxFit.cover, // You can use BoxFit to control how the image is fitted within the circle
+                          ),
+                        ),
+        
+                        title: Text(document['productName']),
+        
+                        subtitle: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
                               mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(document['fullName']),
-                                Text(document['email']),
-                                Text(document['address']),
-                                Text(document['phone']),
+                                Text(('Desired room or bed no.'),
+                                style: TextStyle(
+                                  fontSize: 15,
+                                ),),
+        
+                                Text(document['productSize'],
+                                ),
                               ],
                             ),
-                          ),
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-              ],
-            );
-          }).toList(),
-        );
-      },
-    )
+        
+                            document['accepted'] == true
+                            ? Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Text('Schedule Reservation Date'),
+                                Text(formatedDate(
+                              document['scheduleDate'].toDate())),
+                              ],
+                            )
+                            : Text(''),
+        
+                            ListTile(
+                              title: Text(
+                                'Customer Details:',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+        
+                              subtitle: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(document['fullName']),
+                                  Text(document['email']),
+                                  Text(document['address']),
+                                  Text(document['phone']),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                ],
+              );
+            }).toList(),
+          );
+        },
+            ),
+      )
     );
   }
 }

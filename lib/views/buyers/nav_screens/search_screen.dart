@@ -42,7 +42,7 @@ class _SearchScreenState extends State<SearchScreen> {
       body: _searchedValue == ''
           ? Center(
               child: Text(
-                'Search For Reservation',
+                'Search or reservation',
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -102,7 +102,7 @@ class _SearchScreenState extends State<SearchScreen> {
                     ),
                     SizedBox(height: 10),
                     Text(
-                      'Php.' +
+                      'PHP.' +
                           " " +
                           e['productPrice'].toStringAsFixed(2),
                       style: TextStyle(

@@ -25,47 +25,61 @@ class CategoryScreen extends StatelessWidget {
         ),
       ),
 
-      body: StreamBuilder<QuerySnapshot>(
-      stream: _productStream,
-      builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-        if (snapshot.hasError) {
-          return Center(child: Text('Something went wrong'));
-        }
-
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return Center(
-            child: CircularProgressIndicator(
-              color: Colors.blue.shade300,
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Color.fromARGB(255, 255, 255, 255),Color.fromARGB(255, 189, 225, 255),Color.fromARGB(255, 255, 255, 255),], // Add your gradient colors here
+          ),
+        ),
+        child: StreamBuilder<QuerySnapshot>(
+        stream: _productStream,
+        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          if (snapshot.hasError) {
+            return Center(child: Text('Something went wrong'));
+          }
+        
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(
+              child: CircularProgressIndicator(
+                color: Colors.blue.shade300,
+              ),
+            );
+          }
+        
+          return SingleChildScrollView(
+            child: Container(
+              height: 5000,
+              child: ListView.builder(
+                itemCount: snapshot.data!.docs.length,
+                itemBuilder: (context, index) {
+                  final categoryData = snapshot.data!.docs[index];
+                  return Padding(
+                    padding: const EdgeInsets.only(top: 20),
+                    child: ListTile(
+                      onTap: () {
+                        Navigator.push(
+                          context, MaterialPageRoute(builder: (context) {
+                            return AllProductsScreen(categoryData: categoryData,);
+                          }));
+                      },
+                      leading: Image.network(categoryData['image']),
+                      title:  Text(
+                        categoryData['categoryName'],
+                        style: TextStyle(
+                          fontFamily: 'JosefinSans',
+                          fontWeight: FontWeight.bold,
+                          color: Color.fromRGBO(53, 61, 104, 1),
+                        ),),
+                    ),
+                  );
+              }),
             ),
           );
-        }
-
-        return SingleChildScrollView(
-          child: Container(
-            height: 5000,
-            child: ListView.builder(
-              itemCount: snapshot.data!.docs.length,
-              itemBuilder: (context, index) {
-                final categoryData = snapshot.data!.docs[index];
-                return Padding(
-                  padding: const EdgeInsets.only(top: 20),
-                  child: ListTile(
-                    onTap: () {
-                      Navigator.push(
-                        context, MaterialPageRoute(builder: (context) {
-                          return AllProductsScreen(categoryData: categoryData,);
-                        }));
-                    },
-                    leading: Image.network(categoryData['image']),
-                    title:  Text(
-                      categoryData['categoryName']),
-                  ),
-                );
-            }),
-          ),
-        );
-      },
-    ),
+        },
+            ),
+      ),
     );
   }
 }

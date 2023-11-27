@@ -125,7 +125,8 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                 Text(
                                   'Name',
                                   style: TextStyle(
-                                    color: Color.fromRGBO(94, 96, 104, 1),
+                                    color: Color.fromRGBO(53, 61, 104, 1),
+                                    
                                     fontWeight: FontWeight.bold,
                                     fontSize: 15,
                                   ),
@@ -133,9 +134,9 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                 Text(
                                   widget.productData['productName'],
                                   style: TextStyle(
-                                    color: Color.fromRGBO(53, 61, 104, 1),
+                                    color: Color.fromRGBO(53, 53, 53, 1),
                                     fontSize: 18,
-                                    fontWeight: FontWeight.bold,
+                                    fontWeight: FontWeight.w500,
                                   ),
                                   textAlign: TextAlign.center,
                                 ),
@@ -153,7 +154,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                 Text(
                                   'Contact Number',
                                   style: TextStyle(
-                                    color: Color.fromRGBO(94, 96, 104, 1),
+                                    color: Color.fromRGBO(53, 61, 104, 1),
                                     fontWeight: FontWeight.bold,
                                     fontSize: 13,
                                   ),
@@ -161,9 +162,9 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                 Text(
                                 widget.productData['productContnum'],
                                   style: TextStyle(
-                                    color: Color.fromRGBO(53, 61, 104, 1),
+                                    color: Color.fromRGBO(53, 53, 53, 1),
                                     fontSize: 18,
-                                    fontWeight: FontWeight.bold,
+                                    fontWeight: FontWeight.w500,
                                   ),
                                   textAlign: TextAlign.center,
                                 ),
@@ -188,7 +189,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                 Text(
                                   'Type',
                                   style: TextStyle(
-                                    color: Color.fromRGBO(94, 96, 104, 1),
+                                    color: Color.fromRGBO(53, 61, 104, 1),
                                     fontWeight: FontWeight.bold,
                                     fontSize: 15,
                                   ),
@@ -196,9 +197,9 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                 Text(
                                   widget.productData['category'],
                                   style: TextStyle(
-                                    color: Color.fromRGBO(53, 61, 104, 1),
+                                    color: Color.fromRGBO(53, 53, 53, 1),
                                     fontSize: 18,
-                                    fontWeight: FontWeight.bold,
+                                    fontWeight: FontWeight.w500,
                                   ),
                                   textAlign: TextAlign.center,
                                 ),
@@ -216,17 +217,17 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                 Text(
                                   'Monthly',
                                   style: TextStyle(
-                                    color: Color.fromRGBO(94, 96, 104, 1),
+                                    color: Color.fromRGBO(53, 61, 104, 1),
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 13,
+                                    fontSize: 15,
                                   ),
                                 ),
                                 Text(
-                                'Php.' + ' ' + widget.productData['productPrice'].toStringAsFixed(2),
+                                'PHP.' + ' ' + widget.productData['productPrice'].toStringAsFixed(2),
                                   style: TextStyle(
-                                    color: Color.fromRGBO(53, 61, 104, 1),
+                                    color: Color.fromRGBO(53, 53, 53, 1),
                                     fontSize: 18,
-                                    fontWeight: FontWeight.bold,
+                                    fontWeight: FontWeight.w500,
                                   ),
                                   textAlign: TextAlign.center,
                                 ),
@@ -335,7 +336,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                   Text(
                                     'Number of bathroom',
                                     style: TextStyle(
-                                      color: Color.fromRGBO(94, 96, 104, 1),
+                                      color: Color.fromRGBO(53, 61, 104, 1),
                                       fontWeight: FontWeight.bold,
                                       fontSize: 13,
                                     ),
@@ -343,9 +344,9 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                   Text(
                                     widget.productData['productBathroom'],
                                     style: TextStyle(
-                                      color: Color.fromRGBO(53, 61, 104, 1),
+                                      color: Color.fromRGBO(53, 53, 53, 1),
                                       fontSize: 15,
-                                      fontWeight: FontWeight.bold,
+                                      fontWeight: FontWeight.w500,
                                     ),
                                     textAlign: TextAlign.center,
                                   ),
@@ -354,7 +355,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                   Text(
                                     'Number of bedroom',
                                     style: TextStyle(
-                                      color: Color.fromRGBO(94, 96, 104, 1),
+                                      color: Color.fromRGBO(53, 61, 104, 1),
                                       fontWeight: FontWeight.bold,
                                       fontSize: 13,
                                     ),
@@ -362,9 +363,9 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                   Text(
                                     widget.productData['productBedroom'],
                                     style: TextStyle(
-                                      color: Color.fromRGBO(53, 61, 104, 1),
+                                      color: Color.fromRGBO(53, 53, 53, 1),
                                       fontSize: 15,
-                                      fontWeight: FontWeight.bold,
+                                      fontWeight: FontWeight.w500,
                                     ),
                                     textAlign: TextAlign.center,
                                   ),
@@ -381,9 +382,9 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                   Text(
                                     widget.productData['description'],
                                     style: TextStyle(
-                                      color: Color.fromRGBO(53, 61, 104, 1),
+                                      color: Color.fromRGBO(53, 53, 53, 1),
                                       fontSize: 15,
-                                      fontWeight: FontWeight.bold,
+                                      fontWeight: FontWeight.w500,
                                     ),
                                     textAlign: TextAlign.center,
                                   ),
@@ -401,7 +402,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                   Text(
                                     'Do have electric/water submeter?',
                                     style: TextStyle(
-                                      color: Color.fromRGBO(94, 96, 104, 1),
+                                      color: Color.fromRGBO(53, 61, 104, 1),
                                       fontWeight: FontWeight.bold,
                                       fontSize: 13,
                                     ),
@@ -409,9 +410,9 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                   Text(
                                     widget.productData['productSubmeter'],
                                     style: TextStyle(
-                                      color: Color.fromRGBO(53, 61, 104, 1),
+                                      color: Color.fromRGBO(53, 53, 53, 1),
                                       fontSize: 15,
-                                      fontWeight: FontWeight.bold,
+                                      fontWeight: FontWeight.w500,
                                     ),
                                     textAlign: TextAlign.center,
                                   ),
@@ -420,7 +421,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                   Text(
                                     'Are pets allowed?',
                                     style: TextStyle(
-                                      color: Color.fromRGBO(94, 96, 104, 1),
+                                      color: Color.fromRGBO(53, 61, 104, 1),
                                       fontWeight: FontWeight.bold,
                                       fontSize: 13,
                                     ),
@@ -428,9 +429,9 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                   Text(
                                     widget.productData['productPets'],
                                     style: TextStyle(
-                                      color: Color.fromRGBO(53, 61, 104, 1),
+                                      color: Color.fromRGBO(53, 53, 53, 1),
                                       fontSize: 15,
-                                      fontWeight: FontWeight.bold,
+                                      fontWeight: FontWeight.w500,
                                     ),
                                     textAlign: TextAlign.center,
                                   ),
@@ -445,7 +446,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                 ),
 
               ExpansionTile(
-                title: Text('Available rooms or beds',
+                title: Text('Desired Room or Bed No.',
                 style: TextStyle(
                           color: Color.fromRGBO(53, 61, 104, 1),
                           fontWeight: FontWeight.bold,
@@ -494,7 +495,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
           :
           () {
             if(_selectedSize==null) {
-              return showSnack(context, 'Please Select A Size');
+              return showSnack(context, 'Please select desired room or bed no.');
             } else {
               _cartProvider.addProductToCart(
               widget.productData['productName'],
@@ -514,12 +515,12 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               );
 
               return showSnack(context,
-              'You Added ${widget.productData['productName']} To Your Reservation');
+              'You added ${widget.productData['productName']} to your reservation');
             }
           },
           child: Container(
             height: 50,
-            width: MediaQuery.of(context).size.width,
+            width: MediaQuery.of(context).size.width - 40,
             decoration: BoxDecoration(
               color: _cartProvider.getCartItem.containsKey(widget.productData['productId'])
               ? Colors.grey
@@ -553,8 +554,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   style: TextStyle(
                     color:  Colors.white,
                     fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                    letterSpacing: 3,
+                    fontSize: 19,
                     ),
                   )
                   : Text(
@@ -562,8 +562,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   style: TextStyle(
                     color:  Colors.white,
                     fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                    letterSpacing: 3,
+                    fontSize: 19,
                     ),
                   ),
                 )

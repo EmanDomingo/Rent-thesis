@@ -67,37 +67,43 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   child: TextFormField(
                     controller: _fullNameController,
                     decoration: InputDecoration(
-                      labelText: 'Enter Full Name',
+                      labelText: 'Enter full name',
                     ),
                   ),
                 ),
-          
+                SizedBox(
+                  height: 10,
+                ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
                     controller: _emailController,
                     decoration: InputDecoration(
-                      labelText: 'Enter Email',
+                      labelText: 'Enter email',
                     ),
                   ),
                 ),
-          
+                SizedBox(
+                  height: 10,
+                ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
                     controller: _phoneController,
                     decoration: InputDecoration(
-                      labelText: 'Enter Phone',
+                      labelText: 'Enter phone',
                     ),
                   ),
                 ),
-          
+                SizedBox(
+                  height: 10,
+                ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
                     controller: _addressController,
                     decoration: InputDecoration(
-                      labelText: 'Enter Address',
+                      labelText: 'Enter address',
                     ),
                   ),
                 ),
@@ -126,8 +132,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           });
           },
           child: Container(
-            height: 40,
-            width: MediaQuery.of(context).size.width,
+            height: 50,
+            width: MediaQuery.of(context).size.width -40,
             decoration: BoxDecoration(
               color: Colors.blue.shade300,
               borderRadius: BorderRadius.circular(10),
@@ -147,8 +153,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 style: TextStyle(
                     color:  Colors.white,
                     fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                    letterSpacing: 3,
+                    fontSize: 19,
                     ),
               ),
             ),
