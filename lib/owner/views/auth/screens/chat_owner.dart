@@ -23,7 +23,7 @@ class _ChatMessageScreenState extends State<ChatOwnerScreen> {
         //backgroundColor: Color.fromARGB(255, 167, 215, 255),
         title: Text('CHAT',
         style: TextStyle(
-          color: const Color.fromARGB(255, 60, 128, 184),
+          color: Color.fromRGBO(12, 100, 56, 1),
           fontFamily: 'JosefinSans',
           fontWeight: FontWeight.bold,
           fontSize: 20,
@@ -31,7 +31,15 @@ class _ChatMessageScreenState extends State<ChatOwnerScreen> {
         ),
       ),
 
-      body: _buildUserList(),
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Color.fromARGB(255, 255, 255, 255),Color.fromARGB(255, 189, 255, 214),Color.fromARGB(255, 255, 255, 255),], // Add your gradient colors here
+          ),
+        ),
+        child: _buildUserList()),
     );
   }
 
@@ -84,6 +92,13 @@ class _ChatMessageScreenState extends State<ChatOwnerScreen> {
                 );
               },
             ),
+            Padding(
+                              padding: const EdgeInsets.all(0.0),
+                              child: Divider(
+                                thickness: 1,
+                                color: Color.fromARGB(255, 214, 214, 214),
+                              ),
+                            ),
           ],
         ),
       );

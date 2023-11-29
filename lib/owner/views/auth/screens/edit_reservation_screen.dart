@@ -14,40 +14,31 @@ class EditReservationScreen extends StatelessWidget {
         length: 2,
         child: Scaffold(
           appBar: AppBar(
-            title: Text(
-              'MANAGE RESERVATION',
-              style: TextStyle(
-          color: const Color.fromARGB(255, 60, 128, 184),
-          fontFamily: 'JosefinSans',
-          fontWeight: FontWeight.bold,
-          fontSize: 20,
-          ),
-            ),
-          
-
+            backgroundColor: Color.fromARGB(255, 60, 184, 126),
+            elevation: 2,
             bottom: TabBar(tabs: [
               Tab(child: Text('Published',
               style: TextStyle(
                 fontSize: 16,
-                color: const Color.fromARGB(255, 60, 128, 184),
+                color: Colors.white,
               ),),
               ),
               //Tab(child: Text('Shipping'),),
               Tab(child: Text('Unpublished',
               style: TextStyle(
                 fontSize: 16,
-                color: const Color.fromARGB(255, 60, 128, 184),
+                color: Colors.white,
               ),),
               ),
             ]),
           ),
 
           body: TabBarView(
-            children: [
-              PublishedTab(),
-              UnpublishedTab(),
-            ],
-          ),
+              children: [
+                PublishedTab(),
+                UnpublishedTab(),
+              ],
+            ),
         ),
       )
     );

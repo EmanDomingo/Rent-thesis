@@ -23,7 +23,7 @@ class LandingScreen extends StatelessWidget {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [Color.fromARGB(255, 107, 230, 158), Color.fromARGB(255, 239, 255, 239),], // Add your gradient colors here
+            colors: [Color.fromARGB(255, 189, 255, 200), Color.fromARGB(255, 255, 255, 255),Color.fromARGB(255, 189, 255, 200),], // Add your gradient colors here
           ),
         ),
         child: StreamBuilder<DocumentSnapshot>(
@@ -93,7 +93,7 @@ class LandingScreen extends StatelessWidget {
                 },
               child: Text('Signout',
               style: TextStyle(
-                fontSize: 20,
+                fontSize: 23,
                 fontWeight: FontWeight.bold,
                 color: Colors.green.shade800,
                 ),

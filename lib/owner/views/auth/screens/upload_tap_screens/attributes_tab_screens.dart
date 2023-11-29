@@ -44,14 +44,14 @@ class _AttributesTabScreenState extends State<AttributesTabScreen> with Automati
                       },
                       decoration: InputDecoration(
                         hintText: 'Type N/A, if none',
-                        labelText: 'Number of available rooms or beds',
+                        labelText: 'Number of rooms or beds',
                       ),
                     ),
                   ),
                 ),
                 _entered == true
                     ? ElevatedButton(
-                        style: ElevatedButton.styleFrom(primary: Colors.blue.shade300),
+                        style: ElevatedButton.styleFrom(primary: const Color.fromARGB(255, 255, 255, 255)),
                         onPressed: () {
                           if (_sizeController.text.isNotEmpty) {
                             setState(() {
@@ -69,7 +69,12 @@ class _AttributesTabScreenState extends State<AttributesTabScreen> with Automati
                             );
                           }
                         },
-                        child: Text('Add'),
+                        child: Text('Add',
+                        style: TextStyle(
+                          color: Color.fromRGBO(12, 100, 56, 1),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                          ),),
                       )
                     : Text(''),
               ],
@@ -94,7 +99,7 @@ class _AttributesTabScreenState extends State<AttributesTabScreen> with Automati
                       },
                       child: Container(
                         decoration: BoxDecoration(
-                          color: Colors.blue.shade800,
+                          color: Color.fromARGB(255, 60, 184, 126),
                           borderRadius: BorderRadius.circular(10)
                         ),
                         child: Padding(
@@ -124,10 +129,11 @@ class _AttributesTabScreenState extends State<AttributesTabScreen> with Automati
               },
               child: Text(
                 _isSave?
-                'Saved':'save',
+                'Saved':'Save',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  letterSpacing: 2,
+                  color: Color.fromRGBO(12, 100, 56, 1),
+                  fontSize: 15,
                 ),
               ),
             ),

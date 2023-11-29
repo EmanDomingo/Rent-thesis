@@ -73,12 +73,12 @@ Widget build(BuildContext context) {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [Color.fromARGB(255, 255, 255, 255),const Color.fromARGB(255, 215, 255, 217)], // Add your gradient colors here
+            colors: [Color.fromARGB(255, 255, 255, 255),Color.fromARGB(255, 189, 255, 200),], // Add your gradient colors here
           ),
         ),
       child: CustomScrollView(
         slivers: [ SliverAppBar(
-          backgroundColor: Colors.green.shade500,
+          backgroundColor: Color.fromARGB(255, 232, 255, 236),
               pinned: true,
               stretchTriggerOffset: 150,
               expandedHeight: 200,
@@ -93,11 +93,11 @@ Widget build(BuildContext context) {
                             height: 120,
                             width: 150,
                             decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: Color.fromARGB(255, 232, 255, 236),
                               borderRadius: BorderRadius.circular(20),
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.grey.withOpacity(0.5),
+                                  color: Colors.green.shade700.withOpacity(0.5),
                                   spreadRadius: 2,
                                   blurRadius: 4,
                                 ),
@@ -109,7 +109,9 @@ Widget build(BuildContext context) {
                                     onPressed: () {
                                       selectGalleryImage();
                                     },
-                                    icon: Icon(CupertinoIcons.photo),
+                                    icon: Icon(CupertinoIcons.person_solid,
+                                    size: 100,
+                                    color: Colors.green.shade700,),
                                   ),
                           ),
                         ],
@@ -133,14 +135,14 @@ Widget build(BuildContext context) {
                       },
                       validator: (value) {
                         if (value!.isEmpty) {
-                          return 'Please enter a valid business name';
+                          return 'Please enter a valid name';
                         } else {
                           return null;
                         }
                       },
                       keyboardType: TextInputType.name,
                       decoration: InputDecoration(
-                        labelText: 'Enter Business Name',
+                        labelText: 'Enter Name',
                         border: OutlineInputBorder(),
                       ),
                     ),
@@ -230,7 +232,7 @@ Widget build(BuildContext context) {
                         height: 50,
                         width: MediaQuery.of(context).size.width - 40,
                         decoration: BoxDecoration(
-                          color: Colors.green.shade500,
+                          color: Colors.green.shade400,
                           borderRadius: BorderRadius.circular(10),
                           boxShadow: [
                             BoxShadow(
@@ -248,7 +250,6 @@ Widget build(BuildContext context) {
                               color: Colors.white,
                               fontSize: 19,
                               fontWeight: FontWeight.bold,
-                              letterSpacing: 2,
                             ),
                           ),
                         ),

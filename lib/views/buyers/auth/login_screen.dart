@@ -91,7 +91,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image.asset(
-                        'assets/image/rentop3.png', // Replace with your image path
+                        'assets/image/rentop0.png', // Replace with your image path
                         height: 150, // Adjust the height as needed
                         width: 150, // Adjust the width as needed
                       ),

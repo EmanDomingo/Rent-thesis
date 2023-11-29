@@ -27,16 +27,16 @@ class PublishedTab extends StatelessWidget {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Center(
             child: CircularProgressIndicator(
-              color: Colors.blue.shade300,
+              color: Colors.green.shade300,
             ),
           );
         }
 
         if(snapshot.data!.docs.isEmpty) {
           return Center(
-            child: Text('No Published Reservation',
+            child: Text('No published reservation',
             style: TextStyle(
-              fontSize: 25,
+              fontSize: 22,
               fontWeight: FontWeight.bold,
             ),),
           );
@@ -59,43 +59,55 @@ class PublishedTab extends StatelessWidget {
                             reservationData: ownerProductData,);
                         }));
                   },
+                  
                   child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
                     children: [
-                      SizedBox(width: 8,),
+                      SizedBox(width: 15,),
                       Container(
-                        height: 80,
-                        width: 80,
+                        height: 100,
+                        width: 100,
                         child: Image.network(ownerProductData['imageUrl'][0]
                         ),
                       ),
-                SizedBox(width: 15,),
+                      SizedBox(width: 20,),
                       Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            '' + '' + ownerProductData['productName'],
+                            ownerProductData['productName'],
                             style: TextStyle(
-                              fontSize: 17,
-                              fontWeight: FontWeight.bold,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w500,
+                                  color: Color.fromRGBO(12, 100, 56, 1),
                             ),
                           ),
-                
                           Text(
-                          '' + '' + ownerProductData['productContnum'],
+                          ownerProductData['productContnum'],
                             style: TextStyle(
-                              fontSize: 17,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.blue.shade300,
-                            ),
-                          )
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w500,
+                                  color: Color.fromRGBO(12, 100, 56, 1),
+                                ),
+                          ),
+                          Text(
+                              'PHP.' + ' ' + ownerProductData['productPrice'].toStringAsFixed(2),
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w500,
+                                  letterSpacing: 2,
+                                  color: Colors.yellow.shade900,
+                                ),
+                              ),
                         ],
                       ),
                     ],
                   ),
-                              ),
                 ),
+              ),
+              
   // Specify a key if the Slidable is dismissible.
   key: const ValueKey(0),
 
@@ -119,7 +131,7 @@ class PublishedTab extends StatelessWidget {
             'approved':false,
           });
         },
-        backgroundColor: Color(0xFF21B7CA),
+        backgroundColor: Color.fromARGB(255, 31, 189, 91),
         foregroundColor: Colors.white,
         icon: Icons.approval_rounded,
         label: 'Unpublish',

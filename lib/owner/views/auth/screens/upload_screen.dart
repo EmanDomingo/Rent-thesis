@@ -32,7 +32,7 @@ class UploadScreen extends StatelessWidget {
         key: _formKey,
         child: Scaffold(
           appBar: AppBar(
-            backgroundColor: const Color.fromARGB(255, 60, 128, 184),
+            backgroundColor: Color.fromARGB(255, 60, 184, 126),
             elevation: 2,
             bottom: TabBar(tabs: [
               Tab(
@@ -44,7 +44,7 @@ class UploadScreen extends StatelessWidget {
               ),
               //Tab(child: Text('Shipping'),),
               Tab(
-                child: Text('Description',
+                child: Text('Descriptions',
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.white,
@@ -65,13 +65,14 @@ class UploadScreen extends StatelessWidget {
             AttributesTabScreen(),
             ImagesTabScreen(),
           ]),
-
+          
           bottomSheet: Padding(
             padding: const EdgeInsets.all(8.0),
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                elevation: 5,
-                primary: Colors.blue.shade300,
+                elevation: 3,
+                primary: Colors.green.shade500,
+                
               ),
               onPressed: () async {
                 if (_formKey.currentState!.validate()) {
@@ -111,11 +112,16 @@ class UploadScreen extends StatelessWidget {
                     });
                 }
               },
-              child: Text('Save'),
+              child: Text('Save',
+              style: TextStyle(
+                    color:  Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                    ),
+              ),),
             ),
           ),
         ),
-      ),
-    );
+      );
   }
 }

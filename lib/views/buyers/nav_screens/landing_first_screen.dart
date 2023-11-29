@@ -31,7 +31,7 @@ class _LandingFirstScreenState extends State<LandingFirstScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset(
-                  'assets/image/rentop3.png', // Replace with your image path
+                  'assets/image/rentop0.png', // Replace with your image path
                    height: 230, // Adjust the height as needed
                    width: 230, // Adjust the width as needed
                 ),

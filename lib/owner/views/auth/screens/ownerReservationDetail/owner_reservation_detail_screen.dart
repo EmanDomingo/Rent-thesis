@@ -45,10 +45,12 @@ class _OwnerReservationDetailScreenState extends State<OwnerReservationDetailScr
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue.shade300,
-        elevation: 0,
+        
         title: Text(
-          widget.reservationData['productName']),
+          widget.reservationData['productName'],
+          style: TextStyle(
+            color: Color.fromRGBO(12, 100, 56, 1),
+          ),),
       ),
 
       body: Padding(
@@ -147,10 +149,10 @@ class _OwnerReservationDetailScreenState extends State<OwnerReservationDetailScr
             }
           },
           child: Container(
-            height: 40,
-            width: MediaQuery.of(context).size.width,
+            height: 50,
+            width: MediaQuery.of(context).size.width -40,
             decoration: BoxDecoration(
-              color: Colors.blue.shade300,
+              color: Colors.green.shade500,
               borderRadius: BorderRadius.circular(10),
             ),
         
@@ -158,7 +160,6 @@ class _OwnerReservationDetailScreenState extends State<OwnerReservationDetailScr
               child: Text('UPDATE RESERVATION',
               style: TextStyle(
                 fontSize: 18,
-                letterSpacing: 4,
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
               ),),

@@ -1,6 +1,5 @@
 
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rental_app/owner/views/auth/screens/chat_owner.dart';
 import 'package:rental_app/owner/views/auth/screens/earnings_screen.dart';
@@ -32,7 +31,7 @@ class _MainOwnerScreenState extends State<MainOwnerScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Color.fromRGBO(55, 99, 150, 1),
+        backgroundColor: Colors.white,
         currentIndex: _pageIndex,
         onTap: (value) {
           setState(() {
@@ -40,15 +39,15 @@ class _MainOwnerScreenState extends State<MainOwnerScreen> {
           });
         },
         type: BottomNavigationBarType.fixed,
-        unselectedItemColor: Colors.white,
-        selectedItemColor: Color.fromRGBO(12, 25, 100, 1),
+        unselectedItemColor: Color.fromRGBO(55, 150, 110, 1),
+        selectedItemColor: Color.fromRGBO(12, 100, 56, 1),
         items: [
-        BottomNavigationBarItem(icon: Icon(CupertinoIcons.home), label: 'HOME'),
-        BottomNavigationBarItem(icon: Icon(Icons.upload), label: 'UPLOAD'),
-        BottomNavigationBarItem(icon: Icon(Icons.chat), label: 'CHAT'),
-        BottomNavigationBarItem(icon: Icon(Icons.edit), label: 'EDIT'),
-        BottomNavigationBarItem(icon: Icon(CupertinoIcons.house), label: 'RESERVATION'),
-        BottomNavigationBarItem(icon: Icon(Icons.logout), label: 'LOGOUT'),
+        BottomNavigationBarItem(icon: Icon(Icons.home_filled), label: 'Home'),
+        BottomNavigationBarItem(icon: Icon(Icons.upload), label: 'Upload'),
+        BottomNavigationBarItem(icon: Icon(Icons.chat), label: 'Chat'),
+        BottomNavigationBarItem(icon: Icon(Icons.edit), label: 'Edit'),
+        BottomNavigationBarItem(icon: Icon(Icons.check_circle_outline_rounded), label: 'Approval'),
+        BottomNavigationBarItem(icon: Icon(Icons.logout), label: 'Logout'),
       ],),
 
       body: _pages[_pageIndex],

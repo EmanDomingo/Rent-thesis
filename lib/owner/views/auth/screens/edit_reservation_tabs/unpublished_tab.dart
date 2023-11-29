@@ -26,16 +26,16 @@ class UnpublishedTab extends StatelessWidget {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Center(
             child: CircularProgressIndicator(
-              color: Colors.blue.shade300,
+              color: Colors.green.shade300,
             ),
           );
         }
 
         if(snapshot.data!.docs.isEmpty) {
           return Center(
-            child: Text('No Unpublished Reservation ',
+            child: Text('No unpublished reservation ',
             style: TextStyle(
-              fontSize: 25,
+              fontSize: 22,
               fontWeight: FontWeight.bold,
             ),),
           );
@@ -49,41 +49,51 @@ class UnpublishedTab extends StatelessWidget {
               final ownerProductData = snapshot.data!.docs[index];
               return Slidable(
                 child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  children: [
-                    SizedBox(width: 8,),
-                    Container(
-                      height: 80,
-                      width: 80,
-                      child: Image.network(ownerProductData['imageUrl'][0]
-                      ),
-                    ),
-                    SizedBox(width: 15,),
-                    Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          ownerProductData['productName'],
-                          style: TextStyle(
-                            fontSize: 17,
-                            fontWeight: FontWeight.bold,
-                          ),
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    children: [
+                      SizedBox(width: 15,),
+                      Container(
+                        height: 100,
+                        width: 100,
+                        child: Image.network(ownerProductData['imageUrl'][0]
                         ),
-
-                        Text(
-                        'P' + ' ' + ownerProductData['productPrice'].toStringAsFixed(2),
-                          style: TextStyle(
-                            fontSize: 17,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.blue.shade300,
+                      ),
+                      SizedBox(width: 20,),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            ownerProductData['productName'],
+                            style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w500,
+                                  color: Color.fromRGBO(12, 100, 56, 1),
+                            ),
                           ),
-                        )
-                      ],
-                    ),
-                  ],
+                          Text(
+                          ownerProductData['productContnum'],
+                            style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w500,
+                                  color: Color.fromRGBO(12, 100, 56, 1),
+                                ),
+                          ),
+                          Text(
+                              'PHP.' + ' ' + ownerProductData['productPrice'].toStringAsFixed(2),
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w500,
+                                  letterSpacing: 2,
+                                  color: Colors.yellow.shade900,
+                                ),
+                              ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
-              ),
   // Specify a key if the Slidable is dismissible.
   key: const ValueKey(0),
 
@@ -107,7 +117,7 @@ class UnpublishedTab extends StatelessWidget {
             'approved':true,
           });
         },
-        backgroundColor: Color(0xFF21B7CA),
+        backgroundColor: Color.fromARGB(255, 31, 189, 91),
         foregroundColor: Colors.white,
         icon: Icons.approval_rounded,
         label: 'Publish',

@@ -17,7 +17,7 @@ class WelcomeText extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Image.asset(
-                        'assets/image/rentop3.png', // Replace with your image path
+                        'assets/image/rentop0.png', // Replace with your image path
                         height: 90, // Adjust the height as needed
                         width: 90, // Adjust the width as needed
                       ),
