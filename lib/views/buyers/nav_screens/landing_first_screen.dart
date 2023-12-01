@@ -30,40 +30,39 @@ class _LandingFirstScreenState extends State<LandingFirstScreen> {
             child: Column (
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset(
-                  'assets/image/rentop0.png', // Replace with your image path
-                   height: 230, // Adjust the height as needed
-                   width: 230, // Adjust the width as needed
-                ),
                 Text(
                       'WELCOME TO',
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: 25,
                         color: Colors.blue,
                       ),
                     ),
-                RichText(
-                  text: TextSpan(
-                    children: <TextSpan>[
-                      TextSpan(
-                        text: 'RENT',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 55,
-                          color: Colors.blue,
-                        ),
-                      ),
-                      TextSpan(
-                        text: 'UP',
-                        style: TextStyle(
-                          fontSize: 55,
-                          color: Colors.blue,
-                        ),
-                      ),
-                    ],
-                  ),
+                    SizedBox(height: 20,),
+                Image.asset(
+                  'assets/image/rent1.png', // Replace with your image path // Adjust the height as needed
+                   width: 230, // Adjust the width as needed
                 ),
-                SizedBox(height: 60,),
+                // RichText(
+                //   text: TextSpan(
+                //     children: <TextSpan>[
+                //       TextSpan(
+                //         text: 'RENT',
+                //         style: TextStyle(
+                //           fontWeight: FontWeight.bold,
+                //           fontSize: 55,
+                //           color: Colors.blue,
+                //         ),
+                //       ),
+                //       TextSpan(
+                //         text: 'UP',
+                //         style: TextStyle(
+                //           fontSize: 55,
+                //           color: Colors.blue,
+                //         ),
+                //       ),
+                //     ],
+                //   ),
+                // ),
                 InkWell(
                   onTap: ()  {
                     Navigator.pushReplacement(context,

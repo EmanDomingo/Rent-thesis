@@ -23,6 +23,7 @@ class _CategoryTextState extends State<CategoryText> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          SizedBox(height: 5,),
           Text(
             'Suggestions',
             style: TextStyle(

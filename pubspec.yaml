@@ -87,6 +87,8 @@ flutter:
   assets:
     - assets/icons/
     - assets/image/rentop0.png
+    - assets/image/rent1.png
+    - assets/image/text.png
     - assets/dialog_flow_auth.json
     # - assets/credentials.json
 

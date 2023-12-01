@@ -39,7 +39,7 @@ class _BannerWidgetState extends State<BannerWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(10.0),
+      padding: EdgeInsets.only(left: 15.0, right: 15.0),
       child: Container(
         height: 150,
         width: double.infinity,

@@ -1,3 +1,4 @@
+
 import 'dart:io';
 
 import 'package:firebase_core/firebase_core.dart';
@@ -6,9 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:provider/provider.dart';
-import 'package:rental_app/owner/views/auth/owner_auth_screen.dart';
 import 'package:rental_app/provider/cart_provider.dart';
 import 'package:rental_app/provider/product_provider.dart';
+import 'package:rental_app/splashscreen/splashscreen.dart';
 //import 'chat.dart';
 
 void main() async {
@@ -53,7 +54,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         fontFamily: 'JosefinSans',//fontFamily: 'IndustrialSans'
       ),
-      home: OwnerAuthScreen(),
+      home: SplashScreen(),
       builder: EasyLoading.init(),
     );
   }
