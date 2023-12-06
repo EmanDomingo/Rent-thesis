@@ -1,9 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:dialog_flowtter/dialog_flowtter.dart';
 import 'package:flutter/material.dart';
 import 'package:rental_app/views/buyers/chatbot/Messages.dart';
-
-import '../../../models/chatbot_model.dart';
 
 void main() {
   runApp(const MyApp());
@@ -41,6 +39,18 @@ class _ChatbotState extends State<Chatbot> {
     super.initState();
   }
 
+  List<String> predefinedQuestions = [
+    "What types of properties do you have?",
+    "How much is the rent for a one-bedroom apartment?",
+    "What amenities are included in the rent?",
+    "What amenities are included in the rent?",
+    "What amenities are included in the rent?",
+    "What amenities are included in the rent?",
+    "What amenities are included in the rent?",
+    "What amenities are included in the rent?",
+    // Add more questions as needed
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,6 +76,26 @@ class _ChatbotState extends State<Chatbot> {
       body: Container(
         child: Column(
           children: [
+            // Display clickable questions in a vertical scrollable list
+            Container(
+              height: 230, // Set a fixed height for the list
+              padding: EdgeInsets.symmetric(horizontal: 14),
+              color: Colors.white,
+              child: ListView(
+                children: [
+                  for (String question in predefinedQuestions)
+                    ElevatedButton(
+                      onPressed: () {
+                        setState(() {
+                          _controller.text = question;
+                        });
+                        sendMessage(question);
+                      },
+                      child: Text(question),
+                    ),
+                ],
+              ),
+            ),
             Expanded(child: MessagesScreen(messages: messages)),
             Container(
               padding: EdgeInsets.symmetric(horizontal: 14, vertical: 8),
@@ -73,171 +103,33 @@ class _ChatbotState extends State<Chatbot> {
               child: Row(
                 children: [
                   Expanded(
-                      child: TextField(
-                    controller: _controller,
-                    style: TextStyle(color: Colors.black),
-                  )),
+                    child: TextField(
+                      controller: _controller,
+                      style: TextStyle(color: Colors.black),
+                    ),
+                  ),
                   IconButton(
-                      onPressed: () {
-                        sendMessage(_controller.text);
-                        _controller.clear();
-                      },
-                      icon: Icon(
-                        Icons.send,
-                        color: Color.fromARGB(255, 45, 114, 241),
-                      ))
+                    onPressed: () {
+                      sendMessage(_controller.text);
+                      _controller.clear();
+                    },
+                    icon: Icon(
+                      Icons.send,
+                      color: Color.fromARGB(255, 45, 114, 241),
+                    ),
+                  ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),
     );
   }
 
+
   sendMessage(String text) async {
-    // ...
-
-    if (text.contains('show name') ||
-        text.contains('list name') ||
-        text.contains('name')) {
-      // Get the available products from Firebase.
-      final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-      CollectionReference productsCollection =
-          _firestore.collection('products');
-      QuerySnapshot snapshot =
-          await productsCollection.where('approved', isEqualTo: true).get();
-
-      // Iterate over the snapshot and add the available products to the list.
-      List<Product> availableProducts = [];
-      for (DocumentSnapshot document in snapshot.docs) {
-        Product product = Product(
-          ownerId: document.id,
-          productName: document.get('productName'),
-          category: document.get('category'),
-          productPrice: document.get('productPrice'),
-        );
-
-        availableProducts.add(product);
-      }
-
-      // Update the list of available products in the chatbot.
-      // setState(() {
-      //   messages.clear();
-      //   for (Product product in availableProducts) {
-      //     addMessage(
-      //         Message(
-      //           text: DialogText(text: [
-      //             product.productName,
-      //             product.productPrice.toString()
-      //           ]),
-      //         ),
-      //         true);
-      //   }
-      // });
-
-      // Listen for realtime changes to the available products collection.
-      productsCollection
-          .where('approved', isEqualTo: true)
-          .snapshots()
-          .listen((snapshot) {
-        // Get the list of available products from the snapshot.
-        // List<Product> availableProducts = [];
-        // for (DocumentSnapshot document in snapshot.docs) {
-        //   Product product = Product(
-        //     ownerId: document.id,
-        //     productName: document.get('productName'),
-        //     category: document.get('category'),
-        //     productPrice: document.get('productPrice'),
-        //   );
-
-        //   availableProducts.add(product);
-        // }
-
-        // Update the list of available products in the chatbot.
-        setState(() {
-          messages.clear();
-          for (Product product in availableProducts) {
-            addMessage(
-                Message(
-                  text: DialogText(text: [product.productPrice.toString()]),
-                ),
-                true);
-          }
-        });
-      });
-    }
-
-    if (text.contains('show price') ||
-        text.contains('list price') ||
-        text.contains('price')) {
-      // Get the available products from Firebase.
-      final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-      CollectionReference productsCollection =
-          _firestore.collection('products');
-      QuerySnapshot snapshot =
-          await productsCollection.where('approved', isEqualTo: true).get();
-
-      // Iterate over the snapshot and add the available products to the list.
-      List<Product> availableProducts = [];
-      for (DocumentSnapshot document in snapshot.docs) {
-        Product product = Product(
-          ownerId: document.id,
-          productName: document.get('productName'),
-          category: document.get('category'),
-          productPrice: document.get('productPrice'),
-        );
-
-        availableProducts.add(product);
-      }
-
-      // Update the list of available products in the chatbot.
-      // setState(() {
-      //   messages.clear();
-      //   for (Product product in availableProducts) {
-      //     addMessage(
-      //         Message(
-      //           text: DialogText(text: [
-      //             product.productName,
-      //             product.productPrice.toString()
-      //           ]),
-      //         ),
-      //         true);
-      //   }
-      // });
-
-      // Listen for realtime changes to the available products collection.
-      productsCollection
-          .where('approved', isEqualTo: true)
-          .snapshots()
-          .listen((snapshot) {
-        // Get the list of available products from the snapshot.
-        // List<Product> availableProducts = [];
-        // for (DocumentSnapshot document in snapshot.docs) {
-        //   Product product = Product(
-        //     ownerId: document.id,
-        //     productName: document.get('productName'),
-        //     category: document.get('category'),
-        //     productPrice: document.get('productPrice'),
-        //   );
-
-        //   availableProducts.add(product);
-        // }
-
-        // Update the list of available products in the chatbot.
-        setState(() {
-          messages.clear();
-          for (Product product in availableProducts) {
-            addMessage(
-                Message(
-                  text: DialogText(text: [product.productPrice.toString()]),
-                ),
-                true);
-          }
-        });
-      });
-    }
-
+    
     if (text.isEmpty) {
       print('Message is empty');
     } else {
