@@ -39,7 +39,13 @@ class _ChatPageState extends State<ChatPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text (widget.receiverUserEmail),
+        title: Text (widget.receiverUserEmail,
+        style: TextStyle(
+          color: Color.fromRGBO(53, 61, 104, 1),
+          fontFamily: 'JosefinSans',
+          fontWeight: FontWeight.bold,
+          fontSize: 20,
+          ),),
       ),
       body: Column(
         children: [
@@ -109,25 +115,32 @@ class _ChatPageState extends State<ChatPage> {
   }
 
   Widget _buildMessageInput () {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 25.0),
-      child: Row(
-        children: [
-          Expanded(child: TextField(
-            controller: _messageController,
-            obscureText: false,
-            ),
-          ),
-      
-          IconButton(
+    return Container(
+                padding: EdgeInsets.symmetric(horizontal: 14, vertical: 14),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: TextField(
+                        controller: _messageController,
+                        obscureText: false,
+                        style: TextStyle(color: Colors.black),
+                        maxLines: null,
+                        decoration: InputDecoration(
+                          hintText: 'Type your message...',
+                          border: OutlineInputBorder(),
+                        ),
+                      ),
+                    ),
+                    IconButton(
             onPressed: sendMessage,
-            icon: const Icon(
-              Icons.arrow_upward,
-              size: 40,
-            ),
+            icon: Icon(
+                        Icons.send,
+                        color: Color.fromARGB(255, 45, 114, 241),
+                        size: 30,
+                      ),
           ),
-        ],
-      ),
-    );
+                  ],
+                ),
+              );
   }
 }

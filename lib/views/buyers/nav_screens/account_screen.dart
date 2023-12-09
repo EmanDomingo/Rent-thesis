@@ -56,7 +56,7 @@ class AccountScreen extends StatelessWidget {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [Color.fromARGB(255, 255, 255, 255),Color.fromARGB(255, 180, 221, 255),
+            colors: [Color.fromARGB(255, 255, 255, 255),Color.fromARGB(255, 205, 233, 255),
             Color.fromARGB(255, 255, 255, 255),], // Add your gradient colors here
           ),
         ),

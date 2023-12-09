@@ -1,6 +1,8 @@
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dialog_flowtter/dialog_flowtter.dart';
 import 'package:flutter/material.dart';
+import 'package:rental_app/models/chatbot_model.dart';
 import 'package:rental_app/views/buyers/chatbot/Messages.dart';
 
 void main() {
@@ -40,14 +42,14 @@ class _ChatbotState extends State<Chatbot> {
   }
 
   List<String> predefinedQuestions = [
+    "About app",
     "What types of properties do you have?",
-    "How much is the rent for a one-bedroom apartment?",
+    "What are the listing price?",
     "What amenities are included in the rent?",
-    "What amenities are included in the rent?",
-    "What amenities are included in the rent?",
-    "What amenities are included in the rent?",
-    "What amenities are included in the rent?",
-    "What amenities are included in the rent?",
+    "Does the system still cover what happened outside after the reservation?",
+    "Should your reservation remain pending, what will happen?",
+    "Is there a way for the customer to send a message to the owner?",
+    "Do I need to present valid identification documents, such as a National ID, Philhealth ID etc.?",
     // Add more questions as needed
   ];
 
@@ -55,12 +57,12 @@ class _ChatbotState extends State<Chatbot> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 2,
-        backgroundColor: const Color.fromARGB(255, 60, 128, 184),
-        title: Text(
-          'Chatbot',
-          style: TextStyle(
-            color: Colors.white,
+        title: Text('CHATBOT',
+        style: TextStyle(
+          color: const Color.fromARGB(255, 60, 128, 184),
+          fontFamily: 'JosefinSans',
+          fontWeight: FontWeight.bold,
+          fontSize: 20,
           ),
         ),
         actions: [
@@ -68,62 +70,97 @@ class _ChatbotState extends State<Chatbot> {
             padding: const EdgeInsets.all(14.0),
             child: Icon(
               Icons.chat,
-              color: Colors.white,
+              color: Colors.blue.shade700,
             ),
           ),
         ],
       ),
-      body: Container(
-        child: Column(
-          children: [
-            // Display clickable questions in a vertical scrollable list
-            Container(
-              height: 230, // Set a fixed height for the list
-              padding: EdgeInsets.symmetric(horizontal: 14),
-              color: Colors.white,
-              child: ListView(
-                children: [
-                  for (String question in predefinedQuestions)
-                    ElevatedButton(
-                      onPressed: () {
-                        setState(() {
-                          _controller.text = question;
-                        });
-                        sendMessage(question);
-                      },
-                      child: Text(question),
-                    ),
-                ],
-              ),
-            ),
-            Expanded(child: MessagesScreen(messages: messages)),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 14, vertical: 8),
-              color: Colors.white,
-              child: Row(
-                children: [
-                  Expanded(
-                    child: TextField(
-                      controller: _controller,
-                      style: TextStyle(color: Colors.black),
-                    ),
-                  ),
-                  IconButton(
-                    onPressed: () {
-                      sendMessage(_controller.text);
-                      _controller.clear();
-                    },
-                    icon: Icon(
-                      Icons.send,
-                      color: Color.fromARGB(255, 45, 114, 241),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
+        body: Container(
+          decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Color.fromARGB(255, 255, 255, 255),Color.fromARGB(255, 255, 255, 255),Color.fromARGB(255, 255, 255, 255),
+            Color.fromARGB(255, 205, 233, 255), Color.fromARGB(255, 209, 234, 255),Color.fromARGB(255, 255, 255, 255),], // Add your gradient colors here
+          ),
         ),
-      ),
+          child: Column(
+            children: [
+              // Display text above the container body
+              Container(
+                padding: EdgeInsets.all(15),
+                child: Text(
+                  'FREQUENTLY ASKED',
+                  style: TextStyle(
+                    color: const Color.fromARGB(255, 60, 128, 184),
+                    fontFamily: 'JosefinSans',
+                    fontWeight: FontWeight.w500,
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+              // Rest of your code...
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 14),
+                color: Colors.white,
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: [
+                      for (String question in predefinedQuestions)
+                        Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: SizedBox(
+                            width: 170,
+                            height: 180,
+                            child: ElevatedButton(
+                              onPressed: () {
+                                setState(() {
+                                  _controller.text = question;
+                                });
+                                sendMessage(question);
+                              },
+                              child: Text(question),
+                            ),
+                          ),
+                        ),
+                    ],
+                  ),
+                ),
+              ),
+              Expanded(child: MessagesScreen(messages: messages)),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 14, vertical: 14),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: TextField(
+                        controller: _controller,
+                        style: TextStyle(color: Colors.black),
+                        maxLines: null,
+                        decoration: InputDecoration(
+                          hintText: 'Type your message...',
+                          border: OutlineInputBorder(),
+                        ),
+                      ),
+                    ),
+                    IconButton(
+                      onPressed: () {
+                        sendMessage(_controller.text);
+                        _controller.clear();
+                      },
+                      icon: Icon(
+                        Icons.send,
+                        color: Color.fromARGB(255, 45, 114, 241),
+                        size: 30,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
     );
   }
 
@@ -146,6 +183,37 @@ class _ChatbotState extends State<Chatbot> {
 
       DetectIntentResponse response = await dialogFlowtter.detectIntent(
           queryInput: QueryInput(text: TextInput(text: text)));
+      
+      if (text.contains('What are the listing price?')) {
+
+    final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+    CollectionReference productsCollection = _firestore.collection('products');
+    QuerySnapshot snapshot = await productsCollection.get();
+
+    List<Product> products = [];
+    for (DocumentSnapshot document in snapshot.docs) {
+      Product product = Product(
+        ownerId: document.id,
+        productName: document.get('productName'),
+        category: document.get('category'),
+        productPrice: document.get('productPrice'),
+      );
+
+      products.add(product);
+    }
+
+    productsCollection.snapshots().listen((snapshot) {
+
+      setState(() {
+    messages.clear();
+    for (Product product in products) {
+      addMessage(Message(
+        text: DialogText(text: ['Pesos ${product.productPrice.toString()}, Category ${product.category}']),
+      ), true);
+    }
+  });
+});
+  }
 
       if (response.message == null) return;
       setState(() {

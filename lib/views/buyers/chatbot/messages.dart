@@ -23,7 +23,7 @@ class _MessagesScreenState extends State<MessagesScreen> {
                   : MainAxisAlignment.start,
               children: [
                 Container(
-                    padding: EdgeInsets.symmetric(vertical: 14, horizontal: 14),
+                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(
@@ -36,9 +36,9 @@ class _MessagesScreenState extends State<MessagesScreen> {
                               widget.messages[index]['isUserMessage'] ? 20 : 0),
                         ),
                         color: widget.messages[index]['isUserMessage']
-                            ? Color.fromARGB(255, 235, 235, 235)
-                            : Colors.blue.shade300.withOpacity(0.8)),
-                    constraints: BoxConstraints(maxWidth: w * 10 / 12),
+                            ? Color.fromARGB(255, 241, 241, 241)
+                            : Color.fromARGB(255, 136, 201, 255)),
+                    constraints: BoxConstraints(maxWidth: w * 6 / 8),
                     child:
                         Text(widget.messages[index]['message'].text.text[0])),
               ],

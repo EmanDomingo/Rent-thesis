@@ -52,13 +52,6 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
       ),
 
       body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [Color.fromARGB(255, 255, 255, 255),Color.fromARGB(255, 149, 207, 255),], // Add your gradient colors here
-          ),
-        ),
         child: ListView.builder(
           shrinkWrap: true,
           itemCount: _cartProvider.getCartItem.length,

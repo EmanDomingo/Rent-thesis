@@ -47,7 +47,7 @@ class ConfirmScreen extends StatelessWidget {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [Color.fromARGB(255, 255, 255, 255),Color.fromARGB(255, 189, 225, 255),Color.fromARGB(255, 255, 255, 255)], // Add your gradient colors here
+            colors: [Color.fromARGB(255, 255, 255, 255),Color.fromARGB(255, 205, 233, 255),Color.fromARGB(255, 255, 255, 255)], // Add your gradient colors here
           ),
         ),
         child: StreamBuilder<QuerySnapshot>(

@@ -370,7 +370,6 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                     textAlign: TextAlign.center,
                                   ),
                                   SizedBox(height: 25),
-                                  // Other details
                                   Text(
                                     'Other details',
                                     style: TextStyle(
@@ -389,6 +388,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                     textAlign: TextAlign.center,
                                   ),
                                   SizedBox(height: 25),
+                                  // Other details
                                 ],
                               ),
                             ),
@@ -435,6 +435,25 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                     ),
                                     textAlign: TextAlign.center,
                                   ),
+                                  SizedBox(height: 25),
+                                  Text(
+                                    'Maximum number of persons',
+                                    style: TextStyle(
+                                      color: Color.fromRGBO(53, 61, 104, 1),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 13,
+                                    ),
+                                  ),
+                                  Text(
+                                    widget.productData['productPersons'],
+                                    style: TextStyle(
+                                      color: Color.fromRGBO(53, 53, 53, 1),
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                  SizedBox(height: 25),
                                 ],
                               ),
                             ),
@@ -507,6 +526,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               widget.productData['ownerId'],
               widget.productData['productAddress'],
               widget.productData['productContnum'],
+              widget.productData['productPersons'],
               widget.productData['productSubmeter'],
               widget.productData['category'],
               widget.productData['productPets'],

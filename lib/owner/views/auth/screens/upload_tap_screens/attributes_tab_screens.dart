@@ -141,6 +141,23 @@ class _AttributesTabScreenState extends State<AttributesTabScreen> with Automati
             TextFormField(
                   validator: (value) {
                     if(value!.isEmpty) {
+                      return 'Maximum number of persons';
+                    } else {
+                      return null;
+                    }
+                  },
+                  onChanged: (value) {
+                    _productProvider.getFormData(productPersons: value);;
+                  },
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    labelText: 'Maximum number of persons',
+                  ),
+                ),
+                SizedBox(height: 30,),
+            TextFormField(
+                  validator: (value) {
+                    if(value!.isEmpty) {
                       return 'Number of bathroom';
                     } else {
                       return null;

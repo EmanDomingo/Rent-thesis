@@ -12,6 +12,7 @@ class ProductProvider with ChangeNotifier{
     String? description,
     DateTime? scheduleDate,
     List<String>? imageUrlList,
+    String? productPersons,
     String? productBathroom,
     String? productBedroom,
     String? productContnum,
@@ -35,6 +36,10 @@ class ProductProvider with ChangeNotifier{
 
     if (productContnum != null) {
       productData['productContnum'] = productContnum;
+    }
+
+    if (productPersons != null) {
+      productData['productPersons'] = productPersons;
     }
 
     if (productBathroom != null) {

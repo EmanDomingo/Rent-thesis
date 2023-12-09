@@ -14,6 +14,7 @@ class CartAttr with ChangeNotifier{
   final String ownerId;
   final String productAddress;
   final String productContnum;
+  final String productPersons;
   final String productSubmeter;
   final String productPets;
   final String category;
@@ -33,6 +34,7 @@ class CartAttr with ChangeNotifier{
   required this.scheduleDate,
   required this.productAddress,
   required this.productContnum,
+  required this.productPersons,
   required this.productSubmeter,
   required this.productPets,
   required this.category,

@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:rental_app/views/buyers/chat/chat_page.dart';
+import 'package:rental_app/views/buyers/chatbot/chatbot.dart';
 
 class ChatMessageScreen extends StatefulWidget {
   const ChatMessageScreen({super.key});
@@ -36,10 +37,24 @@ class _ChatMessageScreenState extends State<ChatMessageScreen> {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [Color.fromARGB(255, 255, 255, 255),Color.fromARGB(255, 189, 225, 255),Color.fromARGB(255, 255, 255, 255),], // Add your gradient colors here
+            colors: [Color.fromARGB(255, 255, 255, 255),Color.fromARGB(255, 205, 233, 255),Color.fromARGB(255, 255, 255, 255),], // Add your gradient colors here
           ),
         ),
         child: _buildUserList()),
+        floatingActionButton: FloatingActionButton.extended(
+        backgroundColor: const Color.fromARGB(255, 60, 128, 184),
+        icon: Icon(Icons.question_answer_outlined,
+        color: Colors.white,),
+        label: Text("FAQ's",
+        style: TextStyle(
+          color: Colors.white
+        ),),
+        tooltip: 'Connect to Assistant',
+        onPressed: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return Chatbot();
+            }));
+        },),
     );
   }
 

@@ -1,7 +1,6 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:rental_app/views/buyers/chatbot/chatbot.dart';
 import 'package:rental_app/views/buyers/nav_screens/account_screen.dart';
 import 'package:rental_app/views/buyers/nav_screens/cart_screen.dart';
 import 'package:rental_app/views/buyers/nav_screens/category_screen.dart';
@@ -78,26 +77,11 @@ class _MainScreenState extends State<MainScreen> {
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomCenter,
-            colors: [Color.fromARGB(255, 255, 255, 255),Color.fromARGB(255, 149, 207, 255),Color.fromARGB(255, 255, 255, 255),], // Add your gradient colors here
+            colors: [Color.fromARGB(255, 255, 255, 255),Color.fromARGB(255, 205, 233, 255),Color.fromARGB(255, 255, 255, 255),], // Add your gradient colors here
           ),
         ),
         child: _pages[_pageIndex],
       ),
-      
-      floatingActionButton: FloatingActionButton.extended(
-        backgroundColor: const Color.fromARGB(255, 60, 128, 184),
-        icon: Icon(Icons.chat,
-        color: Colors.white,),
-        label: Text("Chat",
-        style: TextStyle(
-          color: Colors.white
-        ),),
-        tooltip: 'Connect to Assistant',
-        onPressed: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return Chatbot();
-            }));
-        },),
     );
   }
 }
