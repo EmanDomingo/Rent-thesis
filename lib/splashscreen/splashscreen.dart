@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rental_app/views/buyers/main_screen.dart';
+import 'package:rental_app/views/buyers/nav_screens/landing_first_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key});
@@ -30,7 +30,7 @@ class _SplashScreenState extends State<SplashScreen>
     // Navigate to the next screen
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => MainScreen()),
+      MaterialPageRoute(builder: (context) => LandingFirstScreen()),
     );
   }
 

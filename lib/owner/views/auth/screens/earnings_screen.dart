@@ -57,7 +57,7 @@ class EarningsScreen extends StatelessWidget {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [Color.fromARGB(255, 255, 255, 255),Color.fromARGB(255, 189, 255, 214),Color.fromARGB(255, 255, 255, 255),], // Add your gradient colors here
+            colors: [Color.fromARGB(255, 255, 255, 255),Color.fromARGB(255, 211, 255, 228),Color.fromARGB(255, 255, 255, 255),], // Add your gradient colors here
           ),
         ),
               child: StreamBuilder<QuerySnapshot>(

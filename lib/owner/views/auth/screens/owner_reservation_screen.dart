@@ -43,7 +43,7 @@ class OwnerReservationScreen extends StatelessWidget {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [Color.fromARGB(255, 255, 255, 255),Color.fromARGB(255, 209, 255, 227),], // Add your gradient colors here
+            colors: [Color.fromARGB(255, 255, 255, 255),Color.fromARGB(255, 235, 255, 243),], // Add your gradient colors here
           ),
         ),
         child: StreamBuilder<QuerySnapshot>(

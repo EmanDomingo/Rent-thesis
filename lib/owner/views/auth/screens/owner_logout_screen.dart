@@ -14,7 +14,7 @@ class OwnerLogoutScreen extends StatelessWidget{
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [Color.fromARGB(255, 255, 255, 255),Color.fromARGB(255, 209, 255, 227),Color.fromARGB(255, 255, 255, 255),], // Add your gradient colors here
+            colors: [Color.fromARGB(255, 255, 255, 255),Color.fromARGB(255, 235, 255, 243),Color.fromARGB(255, 255, 255, 255),], // Add your gradient colors here
           ),
         ),
       child: Center(
@@ -62,7 +62,7 @@ class OwnerLogoutScreen extends StatelessWidget{
                   color: Colors.white,
                 ),),
               style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(Color.fromARGB(255, 60, 184, 126)),
+                backgroundColor: MaterialStateProperty.all(Color.fromARGB(255, 58, 190, 129)),
                 padding: MaterialStateProperty.all(EdgeInsets.symmetric(horizontal: 20, vertical: 10)),
               ),
             ),
@@ -77,7 +77,7 @@ class OwnerLogoutScreen extends StatelessWidget{
                   color: Colors.white,
                 ),),
               style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(Color.fromARGB(255, 245, 90, 79)),
+                backgroundColor: MaterialStateProperty.all(Color.fromARGB(255, 245, 105, 94)),
                 padding: MaterialStateProperty.all(EdgeInsets.symmetric(horizontal:20, vertical: 10)),
               ),
             ),
