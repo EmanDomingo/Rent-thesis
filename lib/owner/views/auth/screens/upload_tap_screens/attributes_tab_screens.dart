@@ -225,6 +225,22 @@ class _AttributesTabScreenState extends State<AttributesTabScreen> with Automati
                 SizedBox(height: 30,),
                 TextFormField(
                   validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Enter Google Maps location link';
+                    } else {
+                      return null;
+                    }
+                  },
+                  onChanged: (value) {
+                    _productProvider.getFormData(linkText: value);
+                  },
+                  decoration: InputDecoration(
+                    labelText: 'Enter Google Maps location link',
+                  ),
+                ),
+            SizedBox(height: 30,),
+                TextFormField(
+                  validator: (value) {
                     if(value!.isEmpty) {
                       return 'Enter other descriptions';
                     } else {

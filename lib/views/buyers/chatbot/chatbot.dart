@@ -111,8 +111,8 @@ class _ChatbotState extends State<Chatbot> {
                         Padding(
                           padding: const EdgeInsets.all(10.0),
                           child: SizedBox(
-                            width: 170,
-                            height: 180,
+                            width: 190,
+                            height: 200,
                             child: ElevatedButton(
                               onPressed: () {
                                 setState(() {
@@ -129,35 +129,35 @@ class _ChatbotState extends State<Chatbot> {
                 ),
               ),
               Expanded(child: MessagesScreen(messages: messages)),
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 14, vertical: 14),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: TextField(
-                        controller: _controller,
-                        style: TextStyle(color: Colors.black),
-                        maxLines: null,
-                        decoration: InputDecoration(
-                          hintText: 'Type your message...',
-                          border: OutlineInputBorder(),
-                        ),
-                      ),
-                    ),
-                    IconButton(
-                      onPressed: () {
-                        sendMessage(_controller.text);
-                        _controller.clear();
-                      },
-                      icon: Icon(
-                        Icons.send,
-                        color: Color.fromARGB(255, 45, 114, 241),
-                        size: 30,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              // Container(
+              //   padding: EdgeInsets.symmetric(horizontal: 14, vertical: 14),
+              //   child: Row(
+              //     children: [
+              //       Expanded(
+              //         child: TextField(
+              //           controller: _controller,
+              //           style: TextStyle(color: Colors.black),
+              //           maxLines: null,
+              //           decoration: InputDecoration(
+              //             hintText: 'Type your message...',
+              //             border: OutlineInputBorder(),
+              //           ),
+              //         ),
+              //       ),
+              //       IconButton(
+              //         onPressed: () {
+              //           sendMessage(_controller.text);
+              //           _controller.clear();
+              //         },
+              //         icon: Icon(
+              //           Icons.send,
+              //           color: Color.fromARGB(255, 45, 114, 241),
+              //           size: 30,
+              //         ),
+              //       ),
+              //     ],
+              //   ),
+              // ),
             ],
           ),
         ),

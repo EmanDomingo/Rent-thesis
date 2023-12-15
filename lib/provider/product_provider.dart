@@ -18,6 +18,7 @@ class ProductProvider with ChangeNotifier{
     String? productContnum,
     String? productSubmeter,
     String? productPets,
+    String? linkText,
     String? productAddress,
     List<String>? sizeList,
     }){
@@ -28,6 +29,10 @@ class ProductProvider with ChangeNotifier{
 
     if (productAddress != null) {
       productData['productAddress'] = productAddress;
+    }
+    
+    if (linkText!=null) {
+      productData['linkText'] = linkText;
     }
 
     if (productPrice != null) {

@@ -17,6 +17,7 @@ class CartAttr with ChangeNotifier{
   final String productPersons;
   final String productSubmeter;
   final String productPets;
+  final String linkText;
   final String category;
 
   final String productSize;
@@ -37,6 +38,7 @@ class CartAttr with ChangeNotifier{
   required this.productPersons,
   required this.productSubmeter,
   required this.productPets,
+  required this.linkText,
   required this.category,
   });
 

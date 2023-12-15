@@ -7,6 +7,7 @@ import 'package:photo_view/photo_view.dart';
 import 'package:provider/provider.dart';
 import 'package:rental_app/provider/cart_provider.dart';
 import 'package:rental_app/utils/show_snackBar.dart';
+import 'package:url_launcher/url_launcher.dart';
 //import 'package:rental_app/utils/show_snackBar.dart';
 
 
@@ -463,7 +464,48 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                     ),
                   ],
                 ),
-
+                SizedBox(height: 15),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20.0, right: 20,),
+                    child: GestureDetector(
+                      onTap: () async {
+                        try {
+                          if (await canLaunch(widget.productData['linkText'])) {
+                            await launch(widget.productData['linkText']);
+                          } else {
+                            print('Could not launch ${widget.productData['linkText']}');
+                          }
+                        } catch (e) {
+                          print('Error launching URL: $e');
+                        }
+                      },
+                      
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Text(
+                                  'Google Map location link',
+                                  style: TextStyle(
+                                    color: Color.fromRGBO(53, 61, 104, 1),
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 15,
+                                  ),
+                                ),
+                          Text(
+                            widget.productData['linkText'],
+                            style: TextStyle(
+                              fontSize: 17,
+                              fontWeight: FontWeight.w500,
+                              color: Color.fromRGBO(53, 53, 53, 1),
+                              decoration: TextDecoration.underline,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 15),
               ExpansionTile(
                 title: Text('Desired Room or Bed No.',
                 style: TextStyle(
@@ -530,6 +572,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               widget.productData['productSubmeter'],
               widget.productData['category'],
               widget.productData['productPets'],
+              widget.productData['linkText'],
               _selectedSize!,
               widget.productData['scheduleDate'],
               );

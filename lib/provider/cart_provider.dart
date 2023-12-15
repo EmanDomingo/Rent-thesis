@@ -34,6 +34,7 @@ class CartProvider with ChangeNotifier{
     String productPersons,
     String productSubmeter,
     String productPets,
+    String linkText,
     String category,
     String productSize,
     Timestamp scheduleDate,
@@ -54,6 +55,7 @@ class CartProvider with ChangeNotifier{
           productPersons: exitingCart.productPersons,
           productSubmeter: exitingCart.productSubmeter,
           productPets: exitingCart.productPets,
+          linkText: exitingCart.linkText,
           category: exitingCart.category,
           scheduleDate: exitingCart.scheduleDate,
           ));
@@ -76,6 +78,7 @@ class CartProvider with ChangeNotifier{
           productPersons: productPersons,
           productSubmeter: productSubmeter,
           productPets: productPets,
+          linkText: linkText,
           category: category,
           ));
         

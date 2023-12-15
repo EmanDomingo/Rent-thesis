@@ -52,6 +52,8 @@ dependencies:
   photo_view: ^0.14.0
   flutter_slidable: ^3.0.0
   dialog_flowtter: ^0.3.3
+  url_launcher: ^6.2.2
+  crypto: ^3.0.3
   #google_sign_in: ^6.1.6
   # intl:
   # bubble:
