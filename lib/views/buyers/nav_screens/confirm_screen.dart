@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:rental_app/controllers/auth_controller.dart';
 
 class ConfirmScreen extends StatelessWidget {
   
@@ -14,6 +15,13 @@ class ConfirmScreen extends StatelessWidget {
 
     return outPutDate;
   }
+
+  String decryptPogi(String text) {
+  final authController = AuthController();
+  final decodedText = authController.decrypt(text);
+  return decodedText;
+}
+
 
   @override
   Widget build(BuildContext context) {
@@ -165,10 +173,10 @@ class ConfirmScreen extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(document['fullName']),
-                                  Text(document['email']),
-                                  Text(document['address']),
-                                  Text(document['phone']),
+                                  Text(decryptPogi(document['fullName'])),
+                                  Text(decryptPogi(document['email'])),
+                                  Text(decryptPogi(document['address'])),
+                                  Text(decryptPogi(document['phone'])),
                                 ],
                               ),
                             ),

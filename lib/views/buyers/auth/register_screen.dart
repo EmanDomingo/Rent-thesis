@@ -47,7 +47,7 @@ class _BuyerRegisterScreenState extends State<BuyerRegisterScreen> {
 
     if (_formKey.currentState!.validate()) {
       await _authController
-          .signUpUSers(email, fullName, address, phoneNumber, password, _image)
+          .signUpUsers(email, fullName, address, phoneNumber, password, _image)
           .whenComplete(() {
         setState(() {
           _formKey.currentState!.reset();

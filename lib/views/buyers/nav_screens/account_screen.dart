@@ -2,6 +2,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:rental_app/controllers/auth_controller.dart';
 import 'package:rental_app/owner/views/auth/owner_auth_screen.dart';
 import 'package:rental_app/views/buyers/auth/login_screen.dart';
 import 'package:rental_app/views/buyers/inner_screens/edit_profile.dart';
@@ -9,8 +10,15 @@ import 'package:rental_app/views/buyers/nav_screens/category_screen.dart';
 import 'package:rental_app/views/buyers/nav_screens/chat_screen.dart';
 import 'package:rental_app/views/buyers/nav_screens/confirm_screen.dart';
 
+
 class AccountScreen extends StatelessWidget {
   final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  String decryptPogi(String text) {
+  final authController = AuthController();
+  final decodedText = authController.decrypt(text);
+  return decodedText;
+}
 
   @override
   Widget build(BuildContext context) {
@@ -70,15 +78,15 @@ class AccountScreen extends StatelessWidget {
                               child: CircleAvatar(
                                 radius: 64,
                                 backgroundColor: Colors.blue.shade300,
-                                backgroundImage: NetworkImage(data['profileImage']),
+                                backgroundImage: NetworkImage(decryptPogi(data['profileImage'])),
                               ),
                             ),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
-                                data['fullName'],
+                                decryptPogi(data['fullName']),
                                 style: TextStyle(
-                                  fontSize: 17,
+                                  fontSize: 20,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -86,9 +94,9 @@ class AccountScreen extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
-                                data['email'],
+                                decryptPogi(data['email']),
                                 style: TextStyle(
-                                  fontSize: 15,
+                                  fontSize: 18,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),

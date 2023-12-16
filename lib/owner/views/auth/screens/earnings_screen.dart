@@ -3,9 +3,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:rental_app/owner/controllers/owner_register_controller.dart';
 
 class EarningsScreen extends StatelessWidget {
   const EarningsScreen({super.key});
+
+  String decryptPogi(String text) {
+  final authController = OwnerController();
+  final decodedText = authController.decrypt(text);
+  return decodedText;
+}
 
   @override
   Widget build(BuildContext context) {
@@ -36,12 +43,12 @@ class EarningsScreen extends StatelessWidget {
               title: Row(
                 children: [
                   CircleAvatar(
-                    backgroundImage: NetworkImage(data['storeImage']),
+                    backgroundImage: NetworkImage(decryptPogi(data['storeImage'])),
                   ),
 
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text('Hi!' + ' ' + ' ' + data['bussinessName'],
+                    child: Text('Hi!' + ' ' + ' ' + decryptPogi(data['bussinessName']),
                     style: TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.bold,

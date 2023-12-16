@@ -23,7 +23,7 @@ class _LoginScreenState extends State<LoginScreen> {
   _loginUsers () async {
     
     if (_formKey.currentState!.validate()) {
-      String res = await _authController.LoginUsers(email, password);
+      String res = await _authController.loginUsers(email, password);
 
       if (res == 'success') {
       return Navigator.pushReplacement(context,

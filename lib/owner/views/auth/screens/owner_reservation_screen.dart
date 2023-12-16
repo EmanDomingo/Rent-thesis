@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:intl/intl.dart';
+import 'package:rental_app/controllers/auth_controller.dart';
 
 class OwnerReservationScreen extends StatelessWidget {
   
@@ -15,6 +16,12 @@ class OwnerReservationScreen extends StatelessWidget {
 
     return outPutDate;
   }
+
+  String decryptPogi(String text) {
+  final authController = AuthController();
+  final decodedText = authController.decrypt(text);
+  return decodedText;
+}
 
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
@@ -163,10 +170,10 @@ class OwnerReservationScreen extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(document['fullName']),
-                                  Text(document['email']),
-                                  Text(document['address']),
-                                  Text(document['phone']),
+                                  Text(decryptPogi(document['fullName'])),
+                                  Text(decryptPogi(document['email'])),
+                                  Text(decryptPogi(document['address'])),
+                                  Text(decryptPogi(document['phone'])),
                                 ],
                               ),
                             ),

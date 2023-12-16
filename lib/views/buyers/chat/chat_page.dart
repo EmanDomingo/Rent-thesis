@@ -3,6 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:rental_app/controllers/auth_controller.dart';
 import 'package:rental_app/views/buyers/chat/chat_bubble.dart';
 import 'package:rental_app/views/buyers/chat/chat_service.dart';
 
@@ -26,6 +27,11 @@ class _ChatPageState extends State<ChatPage> {
   final ChatService _chatService = ChatService();
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
+  String decryptPogi(String text) {
+  final authController = AuthController();
+  final decodedText = authController.decrypt(text);
+  return decodedText;
+}
   void sendMessage() async {
     if (_messageController.text.isNotEmpty) {
       await _chatService.sendMessage(
@@ -39,7 +45,7 @@ class _ChatPageState extends State<ChatPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text (widget.receiverUserEmail,
+        title: Text (decryptPogi(widget.receiverUserEmail),
         style: TextStyle(
           color: Color.fromRGBO(53, 61, 104, 1),
           fontFamily: 'JosefinSans',

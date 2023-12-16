@@ -3,6 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:rental_app/owner/controllers/owner_register_controller.dart';
 import 'package:rental_app/owner/models/owner_user_models.dart';
 
 import '../owner_registration_screen.dart';
@@ -10,6 +11,12 @@ import 'main_owner_screen.dart';
 
 class LandingScreen extends StatelessWidget {
   static const String routeName = '\landing-screen';
+
+  String decryptPogi(String text) {
+  final authController = OwnerController();
+  final decodedText = authController.decrypt(text);
+  return decodedText;
+}
   
   @override
   Widget build(BuildContext context) {
@@ -54,8 +61,8 @@ class LandingScreen extends StatelessWidget {
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(20),
-                child:  Image.network(
-                  ownerUserModel.storeImage.toString(),
+                child:  Image.network(decryptPogi(
+                  ownerUserModel.storeImage.toString()),
                   height: 150,
                   width: 150,
                   fit: BoxFit.cover,
@@ -65,8 +72,8 @@ class LandingScreen extends StatelessWidget {
               SizedBox(
                 height: 15,
               ),
-              Text(
-                ownerUserModel.bussinessName.toString(),
+              Text(decryptPogi(
+                ownerUserModel.bussinessName.toString()),
                 style: TextStyle(
                   fontSize: 25,
                   fontWeight: FontWeight.bold,

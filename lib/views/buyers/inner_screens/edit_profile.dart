@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:rental_app/controllers/auth_controller.dart';
 
 class EditProfileScreen extends StatefulWidget {
   final dynamic userData;
@@ -25,14 +26,19 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
 
   final TextEditingController _addressController = TextEditingController();
   
+  String decryptPogi(String text) {
+  final authController = AuthController();
+  final decodedText = authController.decrypt(text);
+  return decodedText;
+}
 
   @override
   void initState() {
     setState(() {
-      _fullNameController.text = widget.userData['fullName'];
-      _emailController.text = widget.userData['email'];
-      _phoneController.text = widget.userData['phoneNumber'];
-      _addressController.text = widget.userData['address'];
+      _fullNameController.text = decryptPogi(widget.userData['fullName']);
+      _emailController.text = decryptPogi(widget.userData['email']);
+      _phoneController.text = decryptPogi(widget.userData['phoneNumber']);
+      _addressController.text = decryptPogi(widget.userData['address']);
     });
     super.initState();
   }

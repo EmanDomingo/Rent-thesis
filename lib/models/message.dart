@@ -6,6 +6,7 @@ class Message {
   final String receiverId;
   final String message;
   final Timestamp timestamp;
+  bool messageRead; // Added boolean property
 
   Message({
     required this.senderId,
@@ -13,6 +14,7 @@ class Message {
     required this.receiverId,
     required this.timestamp,
     required this.message,
+    required this.messageRead, // Added boolean parameter
   });
 
   Map<String, dynamic> toMap() {
@@ -22,6 +24,19 @@ class Message {
       'receiverId': receiverId,
       'message': message,
       'timestamp': timestamp,
+      'messageRead': messageRead, // Include the boolean property
     };
+  }
+
+  // Create a factory constructor to create a Message object from a Map
+  factory Message.fromMap(Map<String, dynamic> map) {
+    return Message(
+      senderId: map['senderId'],
+      senderEmail: map['senderEmail'],
+      receiverId: map['receiverId'],
+      timestamp: map['timestamp'],
+      message: map['message'],
+      messageRead: map['messageRead'] ?? false, // Use the value from the map or default to false
+    );
   }
 }

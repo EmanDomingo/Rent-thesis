@@ -20,6 +20,7 @@ class ChatService extends ChangeNotifier {
       receiverId: receiverId,
       timestamp: timestamp,
       message: message,
+      messageRead: false, // Set the initial value for messageRead
     );
 
     List<String> ids = [currentUserId, receiverId];
@@ -45,5 +46,40 @@ class ChatService extends ChangeNotifier {
     .collection('messages')
     .orderBy('timestamp', descending: false)
     .snapshots();
+  }
+
+  // Update the messageRead status when a message is read
+  Future<void> markMessageAsRead(String userId, String otherUserId) async {
+    List<String> ids = [userId, otherUserId];
+    ids.sort();
+    String chatRoomId = ids.join("_");
+
+    final QuerySnapshot messagesSnapshot = await _fireStore
+        .collection('chat_rooms')
+        .doc(chatRoomId)
+        .collection('messages')
+        .where('receiverId', isEqualTo: userId)
+        .where('messageRead', isEqualTo: false)
+        .get();
+
+    for (QueryDocumentSnapshot messageDoc in messagesSnapshot.docs) {
+      await messageDoc.reference.update({'messageRead': true});
+    }
+  }
+
+  Future<int> getUnreadMessageCount(String userId, String otherUserId) async {
+    List<String> ids = [userId, otherUserId];
+    ids.sort();
+    String chatRoomId = ids.join("_");
+
+    final QuerySnapshot unreadMessagesSnapshot = await _fireStore
+        .collection('chat_rooms')
+        .doc(chatRoomId)
+        .collection('messages')
+        .where('receiverId', isEqualTo: userId)
+        .where('messageRead', isEqualTo: false)
+        .get();
+
+    return unreadMessagesSnapshot.size;
   }
 }
