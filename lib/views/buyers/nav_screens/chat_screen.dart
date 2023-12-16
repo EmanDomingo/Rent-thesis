@@ -99,7 +99,9 @@ class _ChatMessageScreenState extends State<ChatMessageScreen> {
                   color: Color.fromRGBO(53, 61, 104, 1),
                 ),
               ),
-              subtitle: Text(data['countryValue']),
+              subtitle: Text(
+                data['countryValue'],
+              ),
               leading: CircleAvatar(
                 backgroundImage: NetworkImage(data['storeImage']),
               ),
